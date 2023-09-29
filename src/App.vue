@@ -1,13 +1,15 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
-import { isThreeOfAKind } from "./utils/tongits-eval";
+import { sorted } from "./utils/tongits-eval";
 import { createCard } from "./utils/newCard";
 import { ref, computed } from "vue";
 import { decks, cards } from "cards";
 import * as TheCard from "cards";
+import bj from './utils/BlackJack'
+
 const deck = new decks.StandardDeck({});
 const n = ref([]);
-console.log(1);
+
 console.log(TheCard);
 console.log('"3D"', createCard("3D"));
 console.log('"10C"', createCard("10C"));
