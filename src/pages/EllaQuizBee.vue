@@ -2,7 +2,8 @@
   <div class="mt-16 text-center container mx-auto">
     
     <div>There are {{ questions.length }} questions</div>
-    <div>Score: {{ score }}/{{ total }}</div>
+    <div>Score: {{ score }} }}</div>
+    <div>Item: {{ currentItem }}/{{ total }}</div>
     <div v-if="question" class="my-16">
       <p>{{ question.q }}</p>
       <div v-if="question.c">
@@ -157,7 +158,7 @@ const questions = [
 const total = ref(questions.length)
 let timeout = null
   const changeQuestion = () => {
-    console.log('chaning')
+    if (currentItem.value == total.value) return
     const idx = currentItem.value
     question.value = questions[idx]
     remark.value = ''
