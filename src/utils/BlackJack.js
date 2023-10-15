@@ -114,7 +114,7 @@ newCard.forEach(upcard => {
 console.log(prob)
 
 doAllScenes(evaluateCards)
-await ai1({
+ai1({
   hand: ['AS', '7D', '3H'],
   dealer: { upcard: 'QS' }
 }).catch(_ => _)
