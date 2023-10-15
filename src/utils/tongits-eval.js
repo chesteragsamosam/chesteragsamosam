@@ -23,7 +23,7 @@ const cardsEval = (cards) => {
   return createCard('10S')
 }
 
-console.log('hahahaha', isThreeOfAKind((['AD', 'AS', 'AH'].map(createCard))))
+console.log('hahahaha', isThreeOfAKind(['AD', 'AS', 'AH'].map(createCard)))
 console.log('hahahaha', isThreeOfAKind((['AD', 'AS', 'AH'].map(createCard))))
 console.log('hahahaha', isThreeOfAKind((['2D', 'AS', 'AH'].map(createCard))))
 console.log('areSameSuits', areSameSuits((['2D', 'AS', 'AH'].map(createCard))))

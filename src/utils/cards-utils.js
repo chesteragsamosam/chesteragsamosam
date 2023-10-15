@@ -1,6 +1,7 @@
 export function rankOf(card) {
   return card.rank.abbrn
 }
+
 export function suitOf(card) {
   return card.suit.unicode
 }
@@ -17,6 +18,7 @@ export function areConsecutiveRanks(cards, sortRules) {
   }
   return true;
 }
+
 export function areSameRanks(cards) {
   if (!cards) return false
   for (let i = 0; i < cards.length - 1; i++) {
