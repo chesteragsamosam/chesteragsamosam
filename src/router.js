@@ -3,15 +3,23 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/fonts',
-    component: (async () => await import('./pages/fonts.vue')),
+    component: async () => await import('./pages/fonts.vue'),
   },
   {
     path: '/quiz',
-    component: (async () => await import('./pages/EllaQuizBee.vue')),
+    component: async () => await import('./pages/EllaQuizBee.vue'),
+  },
+  {
+    path: '/qr',
+    component: async () => await import('./pages/QRCode/QRCode.vue'),
+  },
+  {
+    path: '/totp',
+    component: async () => await import('./pages/TOTP/TOTP.vue'),
   },
   {
     path: '/telegram-bot',
-    component: (async () => await import('./pages/TelegramBot.vue')),
+    component: async () => await import('./pages/TelegramBot.vue'),
   },
 ];
 
