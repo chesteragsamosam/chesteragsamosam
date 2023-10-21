@@ -26,7 +26,7 @@ const calculateTOTP = (secret, timeCounter) => {
 const currentTimeVue = ref()
 const generateTOTP = () => {
   const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
-  currentTimeVue.value = currentTime
+  currentTimeVue.value = new Date(currentTime)
   const timeCounter = Math.floor(currentTime / timeStep.value);
   const totp = calculateTOTP(secret.value, timeCounter);
   currentTOTP.value = totp;
