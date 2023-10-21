@@ -9,6 +9,10 @@ const routes = [
     path: '/quiz',
     component: (async () => await import('./pages/EllaQuizBee.vue')),
   },
+  {
+    path: '/telegram-bot',
+    component: (async () => await import('./pages/TelegramBot.vue')),
+  },
 ];
 
 const router = createRouter({
