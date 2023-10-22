@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'JetBrainsMono'; /* Choose a name for your font family */
+  src: url('./assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 800;
+}
+@font-face {
+  font-family: 'RobotoFlex'; /* Choose a name for your font family */
+  src: url('./assets/RobotoFlex/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf')
+    format('truetype');
+  font-weight: 100 800;
+}
+@font-face {
+  font-family: 'JetBrainsMono'; /* Choose a name for your font family */
+  src: url('./assets/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: 100 800;
+}
+@font-face {
+  font-family: 'FiraCode';
+  src: url('./assets/Fira_Code/FiraCode-VariableFont_wght.ttf')
+    format('truetype');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'FiraMono';
+  src: url('./assets/Fira_Mono/FiraMono-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Decovar';
+  src: url('./assets/Decovar_Alpha/DecovarAlpha-VF.ttf') format('truetype');
+}
+.jb-mono {
+  font-family: 'JetBrainsMono';
+}
+.fira-code {
+  font-family: 'FiraCode';
+}
+.fira-mono {
+  font-family: 'FiraMono';
+}
+.decovar {
+  font-family: 'Decovar';
+}
+.roboto-flex {
+  font-family: 'RobotoFlex';
+}
