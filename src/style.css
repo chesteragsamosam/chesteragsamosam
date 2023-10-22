@@ -16,6 +16,10 @@
   font-family: 'FiraMono';
   src: url('./assets/Fira_Mono/FiraMono-Regular.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Decovar';
+  src: url('./assets/Decovar_Alpha/DecovarAlpha-VF.ttf') format('truetype');
+}
 .jb-mono {
   font-family: 'JetBrainsMono';
 }
@@ -24,4 +28,7 @@
 }
 .fira-mono {
   font-family: 'FiraMono';
+}
+.decovar {
+  font-family: 'Decovar';
 }

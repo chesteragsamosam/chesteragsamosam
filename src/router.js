@@ -21,6 +21,10 @@ const routes = [
     path: '/telegram-bot',
     component: async () => await import('./pages/TelegramBot.vue'),
   },
+  {
+    path: '/font',
+    component: async () => await import('./pages/FontPage/Font.vue'),
+  },
 ];
 
 const router = createRouter({

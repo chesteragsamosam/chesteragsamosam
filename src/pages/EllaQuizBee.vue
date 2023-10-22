@@ -2,7 +2,7 @@
   <div class="mt-16 text-center container mx-auto">
     
     <div>There are {{ questions.length }} questions</div>
-    <div>Score: {{ score }} }}</div>
+    <div>Score: {{ score }}</div>
     <div>Item: {{ currentItem }}/{{ total }}</div>
     <div v-if="question" class="my-16">
       <p>{{ question.q }}</p>
