@@ -4,7 +4,7 @@
     <button @click="generateQRCode">Generate QR Code</button>
     <div v-if="qrCode">
       <img :src="qrCode" alt="QR Code" />
-      <a :href="qrCode" download="qrcode.png">
+      <a class="text-amber-600" :href="qrCode" download="qrcode.png">
         Download QR Code
       </a>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <QRCamera></QRCamera>
-    <QRUploadVue></QRUploadVue>
+    <!-- <QRCamera></QRCamera> -->
+    <!-- <QRUploadVue></QRUploadVue> -->
     <QRCodeGenerator></QRCodeGenerator>
   </div>
 </template>

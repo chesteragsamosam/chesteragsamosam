@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply bg-slate-700 text-white container mx-auto;
+}
+
+input,
+textarea {
+  @apply text-black rounded py-1 px-2;
+}
+
+button {
+  @apply rounded px-2 py-1 bg-green-500;
+}
+
 @font-face {
   font-family: 'JetBrainsMono'; /* Choose a name for your font family */
   src: url('./assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf')
