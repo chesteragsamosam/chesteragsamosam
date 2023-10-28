@@ -1,5 +1,4 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
 import { sorted } from "./utils/tongits-eval";
 import { createCard } from "./utils/newCard";
 import { ref, computed } from "vue";
@@ -38,7 +37,7 @@ console.log("The SET", displayDeck.value);
 		/* background-color: #f8f8ff; */
 
 	"
-		class="rounded m-2 px-4 py-2 jb-mono bg-gray-100 font-mono">
+		class="px-4 py-2 m-2 font-mono bg-gray-100 rounded jb-mono">
 		<h1>The quick brown fox jumps over the lazy dog.</h1>
 		<p>https:// www.
 			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae facere dolor esse natus similique corporis ipsa amet temporibus, eum mollitia ad ipsum alias beatae quo labore! Sequi quam nobis quisquam libero vero minima, numquam et ea quasi consequatur necessitatibus fugiat ipsa blanditiis. Placeat voluptates, tempore, odit, veritatis qui incidunt alias iste ad in quam sapiente ipsam expedita? Dolor nesciunt consequuntur, architecto esse nobis quam voluptatibus unde quae. Consequatur eius error at dolores illum, expedita quod minus dicta accusamus necessitatibus? Modi?
@@ -50,7 +49,7 @@ console.log("The SET", displayDeck.value);
 			/* background-color: #080800; */
 
 		"
-		class="rounded m-2 py-2 px-4 bg-gray-900 text-white fira-code text-justify">
+		class="px-4 py-2 m-2 text-justify text-white bg-gray-900 rounded fira-code">
 		<h1>The quick brown fox jumps over the lazy dog.</h1>
 		<p>
 			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae facere dolor esse natus similique corporis ipsa amet temporibus, eum mollitia ad ipsum alias beatae quo labore! Sequi quam nobis quisquam libero vero minima, numquam et ea quasi consequatur necessitatibus fugiat ipsa blanditiis. Placeat voluptates, tempore, odit, veritatis qui incidunt alias iste ad in quam sapiente ipsam expedita? Dolor nesciunt consequuntur, architecto esse nobis quam voluptatibus unde quae. Consequatur eius error at dolores illum, expedita quod minus dicta accusamus necessitatibus? Modi?
@@ -58,12 +57,11 @@ console.log("The SET", displayDeck.value);
 		<p>0+e12,345,678.9</p>
 		<p>Hello, I am Chester Agsamosam, 26 years old, === =/ ~~> and I am a software engineer. As of 2023, I am currently working as an H5 Developer for GCash</p>
 	</div>
-	<div class="flex w-full flex-wrap">
-		<div v-for="card in n" class="text-3xl rounded-md shadow p-2 w-16 h-20">
+	<div class="flex flex-wrap w-full">
+		<div v-for="card in n" class="w-16 h-20 p-2 text-3xl rounded-md shadow">
 			{{ card }}
 		</div>
 	</div> -->
-	<!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
 <style scoped>
