@@ -6,6 +6,10 @@ const routes = [
     component: async () => await import('./pages/FontPage/fonts.vue'),
   },
   {
+    path: '/tic-tac-toe',
+    component: async () => await import('./pages/TicTacToe.vue'),
+  },
+  {
     path: '/quiz',
     component: async () => await import('./pages/EllaQuizBee.vue'),
   },

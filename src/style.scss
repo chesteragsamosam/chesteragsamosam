@@ -49,6 +49,10 @@ button {
   font-family: 'Decovar';
   src: url('./assets/Decovar_Alpha/DecovarAlpha-VF.ttf') format('truetype');
 }
+body {
+  @apply bg-slate-700;
+  min-height: 100vh;
+}
 .jb-mono {
   font-family: 'JetBrainsMono';
 }

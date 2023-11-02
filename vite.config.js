@@ -7,4 +7,12 @@ export default defineConfig({
   build: {
     outDir: './docs', // Output directory
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@components': '/src/components',
+      '@utils': '/src/utils',
+      // Add more aliases as needed
+    },
+  },
 });
