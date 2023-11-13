@@ -12,6 +12,4 @@ import QRUploadVue from '../../components/QRUpload.vue';
 import QRCodeGenerator from '../../components/QRCodeGenerator.vue'
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
