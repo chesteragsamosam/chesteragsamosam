@@ -2,8 +2,16 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
+    path: '/pixel',
+    component: async () => await import('./pages/Pixel/Pixel.vue'),
+  },
+  {
     path: '/fonts',
     component: async () => await import('./pages/FontPage/fonts.vue'),
+  },
+  {
+    path: '/clock',
+    component: async () => await import('./pages/Clock/Clock.vue'),
   },
   {
     path : '/battleship',
@@ -36,6 +44,14 @@ const routes = [
   {
     path: '/font-roboflex',
     component: async () => await import('./pages/FontPage/Font-RobotoFlex.vue'),
+  },
+  {
+    path: '/test',
+    component: async () => await import('./pages/Test.vue'),
+  },
+  {
+    path: '/life',
+    component: async () => await import('./pages/CellularAutomata/GameOfLife/Life.vue'),
   },
 ];
 
