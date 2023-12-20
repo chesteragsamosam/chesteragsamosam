@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import path from 'path';
 import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
@@ -10,9 +11,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
-      '@components': '/src/components',
-      '@utils': '/src/utils',
-      // Add more aliases as needed
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
     },
   },
 });

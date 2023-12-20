@@ -31,7 +31,10 @@
 </script>
 
 <template>
-	<router-view />
+	<NavBar />
+	<div class="container mx-auto">
+		<router-view />
+	</div>
 	<!-- <button @click="draw()">Draw</button>
 	<div style="
 		/* background-color: #f8f8ff; */
