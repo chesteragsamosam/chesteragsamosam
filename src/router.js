@@ -14,7 +14,7 @@ const routes = [
     component: async () => await import('./pages/Clock/Clock.vue'),
   },
   {
-    path : '/battleship',
+    path: '/battleship',
     component: async () => await import('./pages/Battleship/Battleship.vue'),
   },
   {
@@ -51,7 +51,12 @@ const routes = [
   },
   {
     path: '/life',
-    component: async () => await import('./pages/CellularAutomata/GameOfLife/Life.vue'),
+    component: async () =>
+      await import('./pages/CellularAutomata/GameOfLife/Life.vue'),
+  },
+  {
+    path: '/color',
+    component: async () => await import('./pages/Color/Color.vue'),
   },
 ];
 
