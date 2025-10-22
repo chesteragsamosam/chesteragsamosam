@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import 'tailwindcss';
+
+html,
+body {
+  @apply bg-slate-900 text-white;
+}
+
+input,
+textarea {
+  @apply text-black rounded py-1 px-2;
+}
+
+@font-face {
+  font-family: 'RobotoFlex'; /* Choose a name for your font family */
+  src: url('./assets/RobotoFlex/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf')
+    format('truetype');
+  font-weight: 100 800;
+}
+@font-face {
+  font-family: 'Decovar';
+  src: url('./assets/Decovar_Alpha/DecovarAlpha-VF.ttf') format('truetype');
+}
+body {
+  @apply bg-slate-700;
+  min-height: 100vh;
+}
+.jb-mono {
+  font-family: 'JetBrains Mono';
+}
+.fira-code {
+  font-family: 'FiraCode';
+}
+.fira-mono {
+  font-family: 'FiraMono';
+}
+.decovar {
+  font-family: 'Decovar';
+}
+.roboto-flex {
+  font-family: 'RobotoFlex';
+}
+
+button {
+  @apply active:bg-green-500 cursor-pointer rounded px-2 py-1 font-light bg-green-600 hover:shadow-md border border-green-700  text-gray-100;
+  font-family: 'JetBrains Mono';
+}

@@ -1,0 +1,23 @@
+const user_info = {
+  email: '',
+  first_name: '',
+  middle_name: '',
+  last_name: '',
+  suffix_name: '',
+  fide_id: '',
+  ncfp_id: '',
+  title: '',
+  bod: '',
+  gender: '',
+  city: '',
+  province: '',
+  nationality: '',
+  born_at: '',
+  club_afilliation: '',
+  ratings: {
+    rapid: '',
+    bullet: '',
+    blitz: '',
+  },
+  school: {},
+};
