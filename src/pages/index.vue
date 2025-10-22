@@ -3,7 +3,7 @@
     <div class="mx-auto p-4">
       <h2 class="text-2xl font-bold mb-4">Dvoretsky's Endgame Manual</h2>
 
-      <div class="grid gap-4 md:grid-cols-3 grid-cols-1">
+      <div class="md:grid gap-4 md:grid-cols-3 grid-cols-1">
         <!-- Video List -->
         <div class="bg-slate-800 rounded-lg p-4">
           <h3 class="text-xl mb-3">Course Contents</h3>
