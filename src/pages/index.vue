@@ -11,7 +11,16 @@
         >
           <div v-if="selectedVideo">
             <h3 class="text-xl mb-3">{{ selectedVideo.title }}</h3>
-            <video controls class="w-full rounded" :src="selectedVideo.src">
+            <video
+              ref="videoEl"
+              controls
+              playsinline
+              webkit-playsinline
+              x5-playsinline
+              :src="selectedVideo.src"
+              @play="onPlay"
+              class="w-full rounded"
+            >
               Your browser does not support the video tag.
             </video>
           </div>
@@ -62,15 +71,22 @@ export default {
     // console.log('sample video path:', this.sampleVideo);
   },
   methods: {
+    onPlay() {
+      const videoEl = this.$refs.videoEl
+      // If your build or other code sometimes left the video muted, unmute on user play
+      if (videoEl.value && videoEl.value.muted) {
+        videoEl.value.muted = false
+      }
+    },
     changeVid(video) {
       this.selectedVideo = video
-      const videoElement = document.querySelector('video')
-      if (videoElement) {
-        this.$nextTick(() => {
-          videoElement.play()
-        })
-        console.log('should play')
-      }
+      // const videoElement = document.querySelector('video')
+      // if (videoElement) {
+      //   this.$nextTick(() => {
+      //     videoElement.play()
+      //   })
+      //   console.log('should play')
+      // }
     },
   },
 }
