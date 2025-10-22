@@ -1,4 +1,4 @@
-import Chapter0 from '@assets/videos/output-aac.mp4'
+import Chapter0 from '@assets/videos/Chapter 0 - Introduction.mp4'
 import Chapter1I from '@assets/videos/Chapter 1 - Pawn Endgames I.mp4'
 import Chapter1II from '@assets/videos/Chapter 1 - Pawn Endgames II.mp4'
 import Chapter1III from '@assets/videos/Chapter 1 - Pawn Endgames III.mp4'
