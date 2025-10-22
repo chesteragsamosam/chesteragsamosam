@@ -34,3 +34,6 @@ coverage
 
 # Vitest
 __screenshots__/
+
+# Don't ignore GitHub workflow
+!.github/workflows/
