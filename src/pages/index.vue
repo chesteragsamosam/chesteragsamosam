@@ -1,15 +1,30 @@
 <template>
-  <div class="container mx-auto pt-5">
+  <div class="container mx-auto pt-5 md:max-h-screen">
     <div class="mx-auto p-4">
       <h2 class="text-2xl font-bold mb-4">Dvoretsky's Endgame Manual</h2>
 
       <div class="md:grid gap-4 md:grid-cols-3 grid-cols-1">
+        <!-- Video Player -->
+        <div
+          class="bg-slate-800 rounded-lg p-4 mb-4 md:mb-0"
+          style="grid-column-start: 1; grid-column-end: 3"
+        >
+          <div v-if="selectedVideo">
+            <h3 class="text-xl mb-3">{{ selectedVideo.title }}</h3>
+            <video controls class="w-full rounded" :src="selectedVideo.src">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div v-else class="h-full flex items-center justify-center text-slate-400">
+            Select a video to start learning
+          </div>
+        </div>
         <!-- Video List -->
         <div class="bg-slate-800 rounded-lg p-4">
           <h3 class="text-xl mb-3">Course Contents</h3>
-          <div class="space-y-2">
-            <span
-              class="inline-block leading-1 cursor-pointer"
+          <div class="space-y-2 overflow-y-auto max-h-[80vh]">
+            <p
+              class="wrap-normal leading-5 cursor-pointer"
               v-for="video in videos"
               :key="video.src"
               @click="changeVid(video)"
@@ -19,20 +34,7 @@
               ]"
             >
               {{ video.title }}
-            </span>
-          </div>
-        </div>
-
-        <!-- Video Player -->
-        <div class="bg-slate-800 rounded-lg p-4" style="grid-column-start: 2; grid-column-end: 4">
-          <div v-if="selectedVideo">
-            <h3 class="text-xl mb-3">{{ selectedVideo.title }}</h3>
-            <video controls class="w-full rounded" :src="selectedVideo.src">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div v-else class="h-full flex items-center justify-center text-slate-400">
-            Select a video to start learning
+            </p>
           </div>
         </div>
       </div>
