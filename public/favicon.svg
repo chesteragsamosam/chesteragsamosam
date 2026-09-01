@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CA">
+  <rect width="64" height="64" fill="#050810"/>
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#4db8ff" stroke-width="2"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#4db8ff">CA</text>
+</svg>
