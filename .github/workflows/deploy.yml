@@ -27,6 +27,7 @@ jobs:
       - run: pnpm generate
         env:
           NUXT_APP_BASE_URL: /chesteragsamosam/
+          NUXT_PUBLIC_CHAT_API_URL: ${{ secrets.NUXT_PUBLIC_CHAT_API_URL }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: .output/public

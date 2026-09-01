@@ -23,6 +23,10 @@ logs
 .env.*
 !.env.example
 
+# Cloudflare Worker
+.wrangler
+.dev.vars
+
 # Private source material
 Profile.pdf
 linkedin.pdf

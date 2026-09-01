@@ -1,0 +1,6 @@
+name = "chester-digital-twin"
+main = "src/index.ts"
+compatibility_date = "2025-07-15"
+
+[vars]
+SITE_URL = "https://chesteragsamosam.github.io/chesteragsamosam"

@@ -40,8 +40,10 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    openRouterApiKey: process.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API || '',
     public: {
       siteUrl,
+      chatApiUrl: process.env.NUXT_PUBLIC_CHAT_API_URL || (process.env.NODE_ENV === 'production' ? '' : '/api/chat'),
     },
   },
 })

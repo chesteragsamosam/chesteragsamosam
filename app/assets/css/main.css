@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* main.css or assets/css/tailwind.css */
+@import 'markstream-vue/index.css' layer(components);
 
 @theme {
   --font-display: "Instrument Serif", "Times New Roman", serif;

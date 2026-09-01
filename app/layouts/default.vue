@@ -3,5 +3,6 @@
     <SiteNav />
     <slot />
     <SiteFooter />
+    <SiteChat />
   </div>
 </template>
