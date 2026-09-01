@@ -56,7 +56,7 @@ const line = computed(() => {
                 {{ company.tenure }}
               </p>
               <h3 class="display mt-3 text-4xl sm:text-5xl">{{ company.company }}</h3>
-              <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
+              <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.2em]">
                 {{ company.span }}
               </p>
             </SiteReveal>
