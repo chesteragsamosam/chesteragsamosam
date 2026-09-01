@@ -18,16 +18,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/setup@v2
+      - uses: actions/checkout@v4 # Reverted to v4 as v6 does not exist yet
+
+      - uses: pnpm/setup-pnpm@v4 # Updated to the standard, modern pnpm action
         with:
-          runtime: node@22
-          cache: true
+          dest: ~/.local/share/pnpm
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # Crucial step: Installs node_modules
+
       - run: pnpm generate
         env:
           NUXT_APP_BASE_URL: /chesteragsamosam/
           NUXT_PUBLIC_CHAT_API_URL: ${{ secrets.NUXT_PUBLIC_CHAT_API_URL }}
-      - uses: actions/upload-pages-artifact@v5
+
+      - uses: actions/upload-pages-artifact@v3 # Standard stable version for Pages deployment
         with:
           path: .output/public
 
@@ -39,4 +50,4 @@ jobs:
     needs: build
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4 # Standard stable version for Pages deployment
