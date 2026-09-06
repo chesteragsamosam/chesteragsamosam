@@ -22,6 +22,8 @@ useHead({
 
 <template>
   <main id="main">
+    <SiteBackground />
+    <SiteParticles />
     <SiteHero />
     <SiteAbout />
     <SiteJourney />

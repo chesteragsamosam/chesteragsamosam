@@ -39,10 +39,10 @@
 
   body {
     @apply bg-void text-ink font-sans antialiased;
-    background-image:
-      radial-gradient(1200px 640px at 82% -8%, rgb(77 184 255 / 16%), transparent 58%),
-      radial-gradient(900px 480px at 0% 18%, rgb(56 110 255 / 10%), transparent 52%),
-      radial-gradient(700px 360px at 50% 100%, rgb(77 184 255 / 6%), transparent 55%);
+  }
+
+  a, button, input, select, textarea, .cursor-pointer {
+    cursor: pointer !important;
   }
 
   ::selection {
