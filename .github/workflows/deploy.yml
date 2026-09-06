@@ -33,11 +33,22 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile # Crucial step: Installs node_modules
 
+      - name: Verify chat Worker URL
+        env:
+          NUXT_PUBLIC_CHAT_API_URL: ${{ vars.NUXT_PUBLIC_CHAT_API_URL || secrets.NUXT_PUBLIC_CHAT_API_URL }}
+        run: |
+          if [ -z "$NUXT_PUBLIC_CHAT_API_URL" ]; then
+            echo "::error::Set the NUXT_PUBLIC_CHAT_API_URL repository variable or secret to the deployed Cloudflare Worker URL."
+            exit 1
+          fi
+
       - run: pnpm generate
         env:
           NUXT_APP_BASE_URL: /chesteragsamosam/
           NUXT_PUBLIC_SITE_URL: https://chesteragsamosam.github.io/chesteragsamosam
-          NUXT_PUBLIC_CHAT_API_URL: ${{ secrets.NUXT_PUBLIC_CHAT_API_URL }}
+          # The Worker URL is public; accept a repository variable or the
+          # original secret name so either GitHub Actions setting works.
+          NUXT_PUBLIC_CHAT_API_URL: ${{ vars.NUXT_PUBLIC_CHAT_API_URL || secrets.NUXT_PUBLIC_CHAT_API_URL }}
 
       - uses: actions/upload-pages-artifact@v3 # Standard stable version for Pages deployment
         with:
