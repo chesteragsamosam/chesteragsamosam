@@ -10,6 +10,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        'katex/dist/contrib/mhchem': 'katex/dist/contrib/mhchem.js',
+      },
+    },
   },
   app: {
     baseURL,
@@ -46,4 +51,5 @@ export default defineNuxtConfig({
       chatApiUrl: process.env.NUXT_PUBLIC_CHAT_API_URL || '/api/chat',
     },
   },
+  
 })
