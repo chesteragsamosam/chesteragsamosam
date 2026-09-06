@@ -92,6 +92,7 @@ export default {
       return json({ reply }, 200, cors)
     }
     catch (error) {
+      console.log('OpenRouter request failed:', error)
       console.error('OpenRouter request failed:', error)
       return json({
         statusMessage: error instanceof Error ? error.message : 'Chat request failed.',
