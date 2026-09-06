@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 
 const baseURL = process.env.NUXT_APP_BASE_URL || '/'
-const siteUrl = 'https://chesteragsamosam.github.io/chesteragsamosam'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://chesteragsamosam.pages.dev'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     ],
   },
   nitro: {
-    preset: 'github-pages',
+    preset: 'cloudflare-pages',
     prerender: {
       crawlLinks: true,
       routes: ['/', '/cover-letter'],
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
     openRouterApiKey: process.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API || '',
     public: {
       siteUrl,
-      chatApiUrl: process.env.NUXT_PUBLIC_CHAT_API_URL || (process.env.NODE_ENV === 'production' ? '' : '/api/chat'),
+      chatApiUrl: process.env.NUXT_PUBLIC_CHAT_API_URL || '/api/chat',
     },
   },
 })
