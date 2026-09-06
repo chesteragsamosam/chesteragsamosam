@@ -9,7 +9,7 @@ The AI endpoint is a separate Cloudflare Worker in `workers/digital-twin`; it is
 not a Cloudflare Pages application.
 
 1. In GitHub, set the `NUXT_PUBLIC_CHAT_API_URL` Actions secret to the deployed
-   Worker URL, such as `https://chesteragsamosam.chesteragsamosam.workers.dev`.
+   Worker URL, such as `https://chester-digital-twin-api.chesteragsamosam.workers.dev`.
 2. In Cloudflare, create a **Worker** project with `workers/digital-twin` as
    its root directory. Use `npx wrangler deploy --config wrangler.toml` as the
    deploy command (or run `pnpm run deploy:worker` from the repository root).

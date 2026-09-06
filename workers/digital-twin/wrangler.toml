@@ -1,4 +1,5 @@
-name = "chesteragsamosam"
+# Keep the API separate from any Worker Cloudflare Pages generates for the site.
+name = "chester-digital-twin-api"
 main = "src/index.ts"
 compatibility_date = "2025-07-15"
 
