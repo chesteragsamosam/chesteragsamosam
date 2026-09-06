@@ -80,3 +80,34 @@ export async function completeChat(options: {
 
   return reply
 }
+
+export async function streamChat(options: {
+  apiKey: string
+  siteUrl: string
+  messages: ChatMessage[]
+}): Promise<ReadableStream> {
+  const response = await fetch(OPENROUTER_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${options.apiKey}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': options.siteUrl,
+      'X-Title': 'Chester Agsamosam',
+    },
+    body: JSON.stringify({
+      model: CHAT_MODEL,
+      messages: [
+        { role: 'system', content: buildSystemPrompt() },
+        ...options.messages,
+      ],
+      stream: true,
+    }),
+  })
+
+  if (!response.ok) {
+    const errorText = await response.text()
+    throw new Error(`OpenRouter stream request failed: ${response.status} ${errorText}`)
+  }
+
+  return response.body as ReadableStream
+}

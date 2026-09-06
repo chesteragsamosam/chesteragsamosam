@@ -19,11 +19,11 @@ const ticker = [
 <template>
   <section id="top" class="relative min-h-svh pt-16">
     <div class="section-wrap grid min-h-[calc(100svh-4rem)] grid-cols-1 items-end gap-12 pb-10 pt-16 lg:grid-cols-12 lg:gap-8 lg:pb-16">
-      <div class="lg:col-span-8">
+      <div class="relative z-10 lg:col-span-8">
         <p class="kicker">{{ profile.location }}</p>
-        <h1 class="display mt-6 text-[clamp(3.4rem,12vw,9.5rem)]">
+        <h1 class="display mt-6 text-[clamp(3rem,10vw,9rem)] leading-none text-gradient">
           Chester
-          <span class="block italic text-ink/90">Agsamosam</span>
+          <span class="block italic text-mute/80">Agsamosam</span>
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-mute sm:text-xl">
           {{ profile.headline }}

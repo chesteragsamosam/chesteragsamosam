@@ -8,7 +8,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && node scripts/fix-katex.cjs"
+    "postinstall": "nuxt prepare"
   },
   "packageManager": "pnpm@11.13.1",
   "dependencies": {
@@ -18,7 +18,7 @@
     "@vueuse/core": "^14.4.0",
     "@vueuse/nuxt": "^14.4.0",
     "katex": "^0.18.5",
-    "markstream-vue": "^2.0.7",
+    "markdown-it": "^15.0.1",
     "mermaid": "^11.17.2",
     "nuxt": "^4.5.2",
     "stream-diffs": "^0.0.2",

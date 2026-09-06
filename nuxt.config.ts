@@ -28,13 +28,13 @@ export default defineNuxtConfig({
   },
   fonts: {
     defaults: {
-      weights: [400, 500, 600],
+      weights: [400, 500, 600, 700],
       styles: ['normal', 'italic'],
     },
     families: [
-      { name: 'Instrument Serif', provider: 'google', weights: [400] },
-      { name: 'Syne', provider: 'google', weights: [400, 500, 600, 700] },
-      { name: 'IBM Plex Mono', provider: 'google', weights: [400, 500] },
+      { name: 'Plus Jakarta Sans', provider: 'google', weights: [600, 700] },
+      { name: 'Inter', provider: 'google', weights: [400, 500] },
+      { name: 'JetBrains Mono', provider: 'google', weights: [400, 500] },
     ],
   },
   nitro: {

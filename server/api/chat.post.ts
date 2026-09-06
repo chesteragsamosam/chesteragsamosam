@@ -1,4 +1,4 @@
-import { completeChat, parseChatMessages } from '../../shared/chat/complete'
+import { streamChat, parseChatMessages } from '../../shared/chat/complete'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
@@ -23,12 +23,19 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const reply = await completeChat({
+    const stream = await streamChat({
       apiKey,
       siteUrl: String(config.public.siteUrl),
       messages,
     })
-    return { reply }
+
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    })
   }
   catch (error) {
     throw createError({

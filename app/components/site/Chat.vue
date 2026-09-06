@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { profile } from '~/data/profile'
 import type { ChatMessage } from '#shared/chat/types'
-import MarkdownRender from 'markstream-vue'
-import 'markstream-vue/index.css'
+import Markdown from './Markdown.vue'
 
 const config = useRuntimeConfig()
 const apiUrl = computed(() => String(config.public.chatApiUrl || ''))
@@ -51,16 +50,64 @@ async function send() {
   scrollToEnd()
 
   try {
-    const payload = await $fetch<{ reply: string }>(apiUrl.value, {
+    const response = await fetch(apiUrl.value, {
       method: 'POST',
-      body: {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         messages: messages.value,
-      },
+      }),
     })
-    messages.value.push({ role: 'assistant', content: payload.reply })
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.statusText}`)
+    }
+
+    if (!response.body) {
+      throw new Error('No response body from server')
+    }
+
+    // Add assistant message to stream into
+    messages.value.push({ role: 'assistant', content: '' })
+    const currentMessage = messages.value[messages.value.length - 1]
+
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+    let buffer = ''
+
+    while (true) {
+      const { value, done } = await reader.read()
+      if (done) break
+
+      buffer += decoder.decode(value, { stream: true })
+      const lines = buffer.split('\n')
+
+      // Keep the last partial line in the buffer
+      buffer = lines.pop() || ''
+
+      for (const line of lines) {
+        const trimmedLine = line.trim()
+        if (!trimmedLine || trimmedLine === 'data: [DONE]') continue
+
+        if (trimmedLine.startsWith('data: ')) {
+          try {
+            const data = JSON.parse(trimmedLine.slice(6))
+            const content = data.choices?.[0]?.delta?.content || ''
+            currentMessage.content += content
+            scrollToEnd()
+          }
+            catch (e) {
+              console.error('Error parsing SSE chunk:', e)
+            }
+        }
+      }
+    }
   }
   catch (err) {
     error.value = readError(err)
+    // Remove empty assistant message if request failed
+    if (messages.value[messages.value.length - 1].role === 'assistant' && !messages.value[messages.value.length - 1].content) {
+      messages.value.pop()
+    }
   }
   finally {
     pending.value = false
@@ -127,11 +174,8 @@ function onKeydown(event: KeyboardEvent) {
               ? 'ml-auto bg-acid text-acid-ink'
               : 'border border-line bg-void/70 text-ink'"
           >
-            <MarkdownRender
-              mode="chat"
+            <Markdown
               :content="message.content"
-              :final="!pending || index < messages.length - 1"
-              :fade="false"
               class="compact-markdown"
             />
           </div>
@@ -195,37 +239,4 @@ function onKeydown(event: KeyboardEvent) {
 
 <style scoped>
 /* Reset container line-height & spacing */
-:deep(.markstream-vue),
-:deep(.compact-markdown) {
-  line-height: inherit;
-  font-size: inherit;
-  color: inherit;
-}
-
-/* Strip extra vertical margins from Markdown block elements */
-:deep(.markstream-vue p),
-:deep(.markstream-vue h1),
-:deep(.markstream-vue h2),
-:deep(.markstream-vue h3),
-:deep(.markstream-vue ul),
-:deep(.markstream-vue ol),
-:deep(.markstream-vue pre) {
-  margin-top: 0.25rem !important;
-  margin-bottom: 0.25rem !important;
-}
-
-/* Eliminate top/bottom gaps at the edges of the message box */
-:deep(.markstream-vue > *:first-child) {
-  margin-top: 0 !important;
-}
-
-:deep(.markstream-vue > *:last-child) {
-  margin-bottom: 0 !important;
-}
-
-/* Tighten list items spacing */
-:deep(.markstream-vue li) {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
 </style>
