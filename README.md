@@ -2,6 +2,24 @@
 
 Frontend and web app developer based in Lipa, Calabarzon, Philippines.
 
+## Deployment
+
+The frontend is a static Nuxt site deployed by GitHub Actions to GitHub Pages.
+The AI endpoint is a separate Cloudflare Worker in `workers/digital-twin`; it is
+not a Cloudflare Pages application.
+
+1. In GitHub, set the `NUXT_PUBLIC_CHAT_API_URL` Actions secret to the deployed
+   Worker URL, such as `https://chester-digital-twin.<account>.workers.dev`.
+2. In Cloudflare, create a **Worker** project with `workers/digital-twin` as
+   its root directory. Use `npx wrangler deploy --config wrangler.toml` as the
+   deploy command (or run `pnpm run deploy:worker` from the repository root).
+3. Add `OPENROUTER_API_KEY` as a Worker secret with
+   `npx wrangler secret put OPENROUTER_API_KEY --config workers/digital-twin/wrangler.toml`.
+
+Do not use `pnpm run deploy` as a Cloudflare Pages build command: it combined a
+Pages build with the Worker deploy command and caused the missing-entry-point
+error.
+
 **Website:** [chesteragsamosam.github.io/chesteragsamosam](https://chesteragsamosam.github.io/chesteragsamosam/)  
 **Cover letter:** [chesteragsamosam.github.io/chesteragsamosam/cover-letter](https://chesteragsamosam.github.io/chesteragsamosam/cover-letter)  
 **LinkedIn:** [linkedin.com/in/chesteragsamosam](https://www.linkedin.com/in/chesteragsamosam)

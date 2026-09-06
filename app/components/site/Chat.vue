@@ -66,6 +66,17 @@ async function send() {
       throw new Error('No response body from server')
     }
 
+    // The standalone Cloudflare Worker returns { reply }, while the local
+    // Nuxt API streams OpenRouter's SSE response.
+    if (response.headers.get('content-type')?.includes('application/json')) {
+      const payload = await response.json() as { reply?: unknown, statusMessage?: unknown }
+      if (typeof payload.reply !== 'string' || !payload.reply.trim()) {
+        throw new Error(typeof payload.statusMessage === 'string' ? payload.statusMessage : 'The digital twin returned an empty reply.')
+      }
+      messages.value.push({ role: 'assistant', content: payload.reply })
+      return
+    }
+
     // Add assistant message to stream into
     messages.value.push({ role: 'assistant', content: '' })
     const currentMessage = messages.value[messages.value.length - 1]

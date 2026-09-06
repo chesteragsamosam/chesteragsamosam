@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "deploy": "nuxt build && npx wrangler deploy",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "deploy:worker": "npx wrangler deploy --config workers/digital-twin/wrangler.toml",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

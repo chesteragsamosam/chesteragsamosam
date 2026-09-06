@@ -20,9 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4 # Reverted to v4 as v6 does not exist yet
 
-      - uses: pnpm/setup-pnpm@v4 # Updated to the standard, modern pnpm action
+      - uses: pnpm/action-setup@v4
         with:
-          dest: ~/.local/share/pnpm
+          version: 11.13.1
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -36,6 +36,7 @@ jobs:
       - run: pnpm generate
         env:
           NUXT_APP_BASE_URL: /chesteragsamosam/
+          NUXT_PUBLIC_SITE_URL: https://chesteragsamosam.github.io/chesteragsamosam
           NUXT_PUBLIC_CHAT_API_URL: ${{ secrets.NUXT_PUBLIC_CHAT_API_URL }}
 
       - uses: actions/upload-pages-artifact@v3 # Standard stable version for Pages deployment
