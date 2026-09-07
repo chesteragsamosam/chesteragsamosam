@@ -31,7 +31,7 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
 
     // Client should only be allowed to send conversation messages.
     if (
-      (role !== 'user' && role !== 'assistant') ||
+      (role !== 'system' && role !== 'user' && role !== 'assistant') ||
       typeof content !== 'string'
     ) {
       throw new Error(
