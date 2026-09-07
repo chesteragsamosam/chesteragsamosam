@@ -42,6 +42,13 @@ const ticker = [
           >
             Career journey
           </a>
+          <a
+            :href="profile.resume.file"
+            :download="profile.resume.name"
+            class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink transition hover:border-acid hover:text-acid"
+          >
+            {{ profile.resume.label }}
+          </a>
           <NuxtLink
             to="/cover-letter"
             class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink transition hover:border-acid hover:text-acid"

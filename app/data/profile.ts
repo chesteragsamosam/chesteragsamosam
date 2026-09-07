@@ -48,6 +48,11 @@ export const profile = {
       linkedin: 'https://www.linkedin.com/in/chesteragsamosam',
       linkedinLabel: 'linkedin.com/in/chesteragsamosam',
     },
+    resume: {
+      file: '/chester-agsamosam-resume.pdf',
+      label: 'Download resume',
+      name: 'Chester-Agsamosam-Resume.pdf',
+    },
     skills: [
       { group: 'Core', items: ['Vue.js 2/3', 'TypeScript', 'JavaScript', 'Svelte'] },
       { group: 'Interface', items: ['Web Design', 'HTML', 'CSS', 'Tailwind CSS', 'Bootstrap'] },
