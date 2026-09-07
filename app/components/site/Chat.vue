@@ -198,16 +198,13 @@ function onKeydown(event: KeyboardEvent) {
             />
           </div>
 
-          <div v-if="showTypingIndicator" class="max-w-[95%] px-3 py-2 text-sm leading-normal border border-line bg-void/70 text-dim font-mono">
-            <span class="typing-dots" aria-hidden="true">
+          <div v-if="showTypingIndicator" class="max-w-[95%] border border-line bg-void/70 px-3 py-2 text-sm leading-normal text-dim font-mono">
+            <span class="typing-dots" aria-hidden="true" aria-label="Assistant is typing">
               <span class="dot" />
               <span class="dot" />
               <span class="dot" />
             </span>
           </div>
-          <p v-else-if="pending" class="border border-line bg-void/70 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
-            Thinking…
-          </p>
         </div>
 
         <div class="border-t border-line px-4 py-3">
@@ -301,23 +298,39 @@ function onKeydown(event: KeyboardEvent) {
 /* Typing indicator dots */
 .typing-dots {
   display: inline-flex;
-  gap: 0.4rem;
   align-items: center;
+  gap: 0.4rem;
+  min-height: 1.1rem;
 }
+
 .typing-dots .dot {
   width: 6px;
   height: 6px;
+  border-radius: 9999px;
   background: currentColor;
-  border-radius: 50%;
-  opacity: 0.18;
-  animation: typing-dot 1s infinite linear;
+  opacity: 0.22;
+  transform: translateY(0.1rem);
+  animation: typing-dot 1.2s infinite ease-in-out;
+  will-change: transform, opacity;
 }
-.typing-dots .dot:nth-child(2) { animation-delay: 0.12s }
-.typing-dots .dot:nth-child(3) { animation-delay: 0.24s }
+
+.typing-dots .dot:nth-child(2) { animation-delay: 0.14s; }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.28s; }
+
 @keyframes typing-dot {
-  0% { transform: translateY(0); opacity: 0.18 }
-  30% { transform: translateY(-6px); opacity: 1 }
-  60% { transform: translateY(0); opacity: 0.4 }
-  100% { transform: translateY(0); opacity: 0.18 }
+  0%,
+  80%,
+  100% {
+    transform: translateY(0.1rem);
+    opacity: 0.22;
+  }
+  35% {
+    transform: translateY(-0.35rem);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(0.1rem);
+    opacity: 0.58;
+  }
 }
 </style>
