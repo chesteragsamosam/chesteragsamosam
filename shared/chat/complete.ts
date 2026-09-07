@@ -6,6 +6,17 @@ import {
   type ChatMessage,
 } from './types'
 
+export function ensureSystemPrompt(messages: ChatMessage[]): ChatMessage[] {
+  const validMessages = messages.filter(message => message && typeof message.content === 'string' && message.content.trim().length > 0)
+  const systemMessage = validMessages.find(message => message.role === 'system')
+  const remainingMessages = validMessages.filter(message => message.role !== 'system')
+
+  return [
+    ...(systemMessage ? [systemMessage] : [{ role: 'system', content: buildSystemPrompt() }]),
+    ...remainingMessages,
+  ]
+}
+
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 export function parseChatMessages(input: unknown): ChatMessage[] {
@@ -35,7 +46,7 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
       typeof content !== 'string'
     ) {
       throw new Error(
-        'Each message must have role user or assistant and string content.',
+        'Each message must have role system, user, or assistant and string content.',
       )
     }
 
@@ -68,16 +79,10 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
 /**
  * Builds the final message array sent to the LLM.
  *
- * System prompt is ALWAYS the first message.
+ * System prompt is ALWAYS the first message, but is only added once.
  */
 function buildChatMessages(messages: ChatMessage[]): ChatMessage[] {
-  return [
-    {
-      role: 'system',
-      content: buildSystemPrompt(),
-    },
-    ...messages,
-  ]
+  return ensureSystemPrompt(messages)
 }
 
 async function createOpenRouterRequest(options: {

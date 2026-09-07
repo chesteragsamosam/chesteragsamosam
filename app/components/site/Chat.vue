@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { profile } from '~/data/profile'
+import { buildSystemPrompt } from '#shared/chat/system-prompt'
 import type { ChatMessage } from '#shared/chat/types'
 import Markdown from './Markdown.vue'
 
@@ -76,10 +77,15 @@ async function send() {
   const assistantIndex = messages.value.length - 1
 
   try {
+    const payloadMessages = [
+      { role: 'system' as const, content: buildSystemPrompt() },
+      ...messages.value.filter(message => message.role !== 'system'),
+    ]
+
     const res = await fetch(apiUrl.value, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: messages.value }),
+      body: JSON.stringify({ messages: payloadMessages }),
     })
 
     if (!res.ok) {
