@@ -49,7 +49,7 @@ export const profile = {
       linkedinLabel: 'linkedin.com/in/chesteragsamosam',
     },
     resume: {
-      file: '/chester-agsamosam-resume.pdf',
+      file: '/chesteragsamosam/chester-agsamosam-resume.pdf',
       label: 'Download resume',
       name: 'Chester-Agsamosam-Resume.pdf',
     },
