@@ -51,6 +51,18 @@ async function typeOut(text: string, onUpdate: (s: string) => void) {
   }
 }
 
+function normalizeChatContent(content: unknown): string {
+  if (typeof content === 'string') return content
+  if (Array.isArray(content)) {
+    const items = [...content]
+    if (items.length > 0 && items[items.length - 1] === '') {
+      items.pop()
+    }
+    return items.join('')
+  }
+  return ''
+}
+
 const showTypingIndicator = computed(() => {
   const last = messages.value[messages.value.length - 1]
   return !!(pending.value && last && last.role === 'assistant' && (!last.content || last.content.length === 0))
@@ -77,7 +89,13 @@ async function send() {
   const assistantIndex = messages.value.length - 1
 
   try {
-    const requestMessages = messages.value.filter(message => message.content.trim().length > 0)
+    const requestMessages = messages.value
+      .map((message) => ({
+        ...message,
+        content: normalizeChatContent(message.content),
+      }))
+      .filter(message => message.content.trim().length > 0)
+
     const systemMessage = requestMessages.find(message => message.role === 'system')
     const payloadMessages = [
       ...(systemMessage ? [systemMessage] : [{ role: 'system' as const, content: buildSystemPrompt() }]),
