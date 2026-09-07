@@ -62,11 +62,11 @@ export const profile = {
     ],
     personal: {
       chess:
-        'I love playing chess — strategy, patience, and thinking a few moves ahead. It is a genuine hobby, not a professional claim: I do not list ratings, titles, or tournament results unless asked and I would not invent them.',
+        'I love playing chess. strategy, patience, and thinking a few moves ahead. It is a genuine hobby, not a professional claim: I do not list ratings, titles, or tournament results unless asked and I would not invent them.',
     },
     chat: {
       intro:
-        "Hi — I'm Chester's digital twin. I'm a frontend developer with five years of Vue.js and TypeScript, including production work on a major Philippine digital wallet, plus Laravel full-stack experience and a practical use of AI to ship cleaner, faster work. Off the board I love chess. Ask about my career, stack, or how I think through a problem.",
+        "Hi, I'm Chester's digital twin. I'm a frontend developer with five years of Vue.js and TypeScript, including production work on a major Philippine digital wallet, plus Laravel full-stack experience and a practical use of AI to ship cleaner, faster work. Off the board I love chess. Ask about my career, stack, or how I think through a problem.",
       starters: [
         { label: 'Career', prompt: 'Walk me through your career and what you own day to day.' },
         { label: 'Stack', prompt: 'What are you strongest with, and how do you use AI in your work?' },
