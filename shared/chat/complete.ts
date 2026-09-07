@@ -51,7 +51,7 @@ export async function completeChat(options: {
     headers: {
       Authorization: `Bearer ${options.apiKey}`,
       'Content-Type': 'application/json',
-      'HTTP-Referer': options.siteUrl,
+      Referer: options.siteUrl,
       'X-Title': 'Chester Agsamosam',
     },
     body: JSON.stringify({
@@ -91,7 +91,7 @@ export async function streamChat(options: {
     headers: {
       Authorization: `Bearer ${options.apiKey}`,
       'Content-Type': 'application/json',
-      'HTTP-Referer': options.siteUrl,
+      Referer: options.siteUrl,
       'X-Title': 'Chester Agsamosam',
     },
     body: JSON.stringify({
@@ -111,3 +111,4 @@ export async function streamChat(options: {
 
   return response.body as ReadableStream
 }
+
