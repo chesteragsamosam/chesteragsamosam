@@ -3,7 +3,7 @@ export const profile = {
     shortName: 'CA',
     role: 'Web App Developer',
     title: 'Frontend Developer',
-    location: 'Lipa, Calabarzon, Philippines',
+    location: 'Lipa City, Batangas, Philippines',
     birthDate: 'April 2, 1997',
     nationality: 'Filipino',
     gender: 'Male',
