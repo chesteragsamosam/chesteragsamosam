@@ -14,24 +14,48 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
   }
 
   const raw = (input as { messages: unknown }).messages
+
   if (!Array.isArray(raw) || raw.length === 0) {
     throw new Error('Request must include at least one message.')
   }
 
   const messages: ChatMessage[] = []
+
   for (const item of raw.slice(-MAX_CHAT_MESSAGES)) {
-    if (!item || typeof item !== 'object') continue
+    if (!item || typeof item !== 'object') {
+      continue
+    }
+
     const role = (item as { role?: unknown }).role
     const content = (item as { content?: unknown }).content
-    if ((role !== 'user' && role !== 'assistant' && role !== 'system') || typeof content !== 'string') {
-      throw new Error('Each message must have role user, assistant, or system and string content.')
+
+    // Client should only be allowed to send conversation messages.
+    if (
+      (role !== 'user' && role !== 'assistant') ||
+      typeof content !== 'string'
+    ) {
+      throw new Error(
+        'Each message must have role user or assistant and string content.',
+      )
     }
+
     const trimmed = content.trim()
-    if (!trimmed) continue
-    if (trimmed.length > MAX_MESSAGE_LENGTH) {
-      throw new Error(`Each message must be at most ${MAX_MESSAGE_LENGTH} characters.`)
+
+    // Ignore empty messages.
+    if (!trimmed) {
+      continue
     }
-    messages.push({ role, content: trimmed })
+
+    if (trimmed.length > MAX_MESSAGE_LENGTH) {
+      throw new Error(
+        `Each message must be at most ${MAX_MESSAGE_LENGTH} characters.`,
+      )
+    }
+
+    messages.push({
+      role,
+      content: trimmed,
+    })
   }
 
   if (!messages.length) {
@@ -41,24 +65,30 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
   return messages
 }
 
-export async function completeChat(options: {
+/**
+ * Builds the final message array sent to the LLM.
+ *
+ * System prompt is ALWAYS the first message.
+ */
+function buildChatMessages(messages: ChatMessage[]): ChatMessage[] {
+  return [
+    {
+      role: 'system',
+      content: buildSystemPrompt(),
+    },
+    ...messages,
+  ]
+}
+
+async function createOpenRouterRequest(options: {
   apiKey: string
   siteUrl: string
   messages: ChatMessage[]
-}): Promise<string> {
-  const mappedMessages = options.messages.map(m => ({ ...m }))
-  const firstUserIdx = mappedMessages.findIndex(m => m.role === 'user')
-  if (firstUserIdx > 0) {
-    for (let i = 0; i < firstUserIdx; i++) {
-      if (mappedMessages[i].role === 'assistant') mappedMessages[i].role = 'system'
-    }
-  }
+  stream?: boolean
+}): Promise<Response> {
+  const messagesToSend = buildChatMessages(options.messages)
 
-  const messagesToSend = mappedMessages.some(m => m.role === 'system')
-    ? mappedMessages
-    : [{ role: 'system', content: buildSystemPrompt() }, ...mappedMessages]
-
-  const response = await fetch(OPENROUTER_URL, {
+  return fetch(OPENROUTER_URL, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${options.apiKey}`,
@@ -69,20 +99,45 @@ export async function completeChat(options: {
     body: JSON.stringify({
       model: CHAT_MODEL,
       messages: messagesToSend,
+      ...(options.stream ? { stream: true } : {}),
     }),
+  })
+}
+
+export async function completeChat(options: {
+  apiKey: string
+  siteUrl: string
+  messages: ChatMessage[]
+}): Promise<string> {
+  const response = await createOpenRouterRequest({
+    ...options,
+    stream: false,
   })
 
   const payload = await response.json().catch(() => null) as {
-    error?: { message?: string }
-    choices?: Array<{ message?: { content?: string } }>
+    error?: {
+      message?: string
+    }
+    choices?: Array<{
+      message?: {
+        content?: string
+      }
+    }>
   } | null
 
   if (!response.ok) {
-    const detail = payload?.error?.message || response.statusText
-    throw new Error(detail || 'OpenRouter request failed.')
+    const detail =
+      payload?.error?.message ||
+      response.statusText
+
+    throw new Error(
+      detail || 'OpenRouter request failed.',
+    )
   }
 
-  const reply = payload?.choices?.[0]?.message?.content?.trim()
+  const reply =
+    payload?.choices?.[0]?.message?.content?.trim()
+
   if (!reply) {
     throw new Error('The model returned an empty reply.')
   }
@@ -95,38 +150,22 @@ export async function streamChat(options: {
   siteUrl: string
   messages: ChatMessage[]
 }): Promise<ReadableStream> {
-  const mappedMessages = options.messages.map(m => ({ ...m }))
-  const firstUserIdx = mappedMessages.findIndex(m => m.role === 'user')
-  if (firstUserIdx > 0) {
-    for (let i = 0; i < firstUserIdx; i++) {
-      if (mappedMessages[i].role === 'assistant') mappedMessages[i].role = 'system'
-    }
-  }
-
-  const messagesToSend = mappedMessages.some(m => m.role === 'system')
-    ? mappedMessages
-    : [{ role: 'system', content: buildSystemPrompt() }, ...mappedMessages]
-
-  const response = await fetch(OPENROUTER_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${options.apiKey}`,
-      'Content-Type': 'application/json',
-      Referer: options.siteUrl,
-      'X-Title': 'Chester Agsamosam',
-    },
-    body: JSON.stringify({
-      model: CHAT_MODEL,
-      messages: messagesToSend,
-      stream: true,
-    }),
+  const response = await createOpenRouterRequest({
+    ...options,
+    stream: true,
   })
 
   if (!response.ok) {
     const errorText = await response.text()
-    throw new Error(`OpenRouter stream request failed: ${response.status} ${errorText}`)
+
+    throw new Error(
+      `OpenRouter stream request failed: ${response.status} ${errorText}`,
+    )
   }
 
-  return response.body as ReadableStream
-}
+  if (!response.body) {
+    throw new Error('OpenRouter returned an empty response body.')
+  }
 
+  return response.body
+}
