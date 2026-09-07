@@ -46,9 +46,17 @@ export async function completeChat(options: {
   siteUrl: string
   messages: ChatMessage[]
 }): Promise<string> {
-  const messagesToSend = options.messages.some(m => m.role === 'system')
-    ? options.messages
-    : [{ role: 'system', content: buildSystemPrompt() }, ...options.messages]
+  const mappedMessages = options.messages.map(m => ({ ...m }))
+  const firstUserIdx = mappedMessages.findIndex(m => m.role === 'user')
+  if (firstUserIdx > 0) {
+    for (let i = 0; i < firstUserIdx; i++) {
+      if (mappedMessages[i].role === 'assistant') mappedMessages[i].role = 'system'
+    }
+  }
+
+  const messagesToSend = mappedMessages.some(m => m.role === 'system')
+    ? mappedMessages
+    : [{ role: 'system', content: buildSystemPrompt() }, ...mappedMessages]
 
   const response = await fetch(OPENROUTER_URL, {
     method: 'POST',
@@ -87,9 +95,17 @@ export async function streamChat(options: {
   siteUrl: string
   messages: ChatMessage[]
 }): Promise<ReadableStream> {
-  const messagesToSend = options.messages.some(m => m.role === 'system')
-    ? options.messages
-    : [{ role: 'system', content: buildSystemPrompt() }, ...options.messages]
+  const mappedMessages = options.messages.map(m => ({ ...m }))
+  const firstUserIdx = mappedMessages.findIndex(m => m.role === 'user')
+  if (firstUserIdx > 0) {
+    for (let i = 0; i < firstUserIdx; i++) {
+      if (mappedMessages[i].role === 'assistant') mappedMessages[i].role = 'system'
+    }
+  }
+
+  const messagesToSend = mappedMessages.some(m => m.role === 'system')
+    ? mappedMessages
+    : [{ role: 'system', content: buildSystemPrompt() }, ...mappedMessages]
 
   const response = await fetch(OPENROUTER_URL, {
     method: 'POST',
