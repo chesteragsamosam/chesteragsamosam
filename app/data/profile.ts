@@ -29,10 +29,11 @@ export const profile = {
       greeting: 'Dear Hiring Manager,',
       closing: 'Respectfully,',
       paragraphs: [
-        'I am writing to introduce myself as a frontend developer with five years of experience building production web applications. I currently work at Ascendion, where I contribute to a widely used digital wallet in the Philippines — shipping features, reusable components, and interface improvements that have to hold up under real user volume and enterprise quality standards.',
-        'My day-to-day work is Vue.js (2 and 3) and TypeScript, with additional delivery in Svelte, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS. Alongside feature work, I focus on frontend optimization and refactoring: clearer structure, better performance, and code that other developers can reuse. I also take part in refinement, surface risks early, and mentor teammates when technical guidance is needed.',
-        'Before this role I was a full-stack developer at Codabyte, where I handled website design, database administration, real-time crypto data streaming, and defect resolution. That background helps me collaborate across the stack even when my primary ownership is the frontend.',
-        'I use AI as a practical part of how I work — to move faster, test more options, and raise quality — while still relying on my own understanding of the product and the code. I would welcome the chance to bring that combination of production experience, frontend craft, and reliable delivery to your team.',
+      `I’m a developer with 5 years of experience building and maintaining production web applications. I currently work at Ascendion, where I contribute to a widely used digital wallet in the Philippines, working on new features, reusable components, bug fixes, and improvements to existing systems.`,
+      'My strongest experience is in frontend development using Vue.js, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, with additional experience in Svelte. I also have experience with backend development, databases, APIs, and real-time data, which allows me to work across different parts of an application when needed.',
+      'Before Ascendion, I worked as a Full-Stack Developer at Codabyte, where I worked on website development, database administration, real-time crypto data streaming, and resolving issues across the application.',
+      'I also use AI tools in my day-to-day work when they can help me save time, explore solutions, or handle repetitive tasks. I still rely on my experience and understanding of the project to decide what actually works and how the final solution should be implemented.',
+      'I’m looking for an opportunity where I can apply my experience across frontend and backend development, continue growing, and contribute to building reliable and useful products.',
       ],
     },
     summary:
