@@ -23,8 +23,8 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
     if (!item || typeof item !== 'object') continue
     const role = (item as { role?: unknown }).role
     const content = (item as { content?: unknown }).content
-    if ((role !== 'user' && role !== 'assistant') || typeof content !== 'string') {
-      throw new Error('Each message must have role user or assistant and string content.')
+    if ((role !== 'user' && role !== 'assistant' && role !== 'system') || typeof content !== 'string') {
+      throw new Error('Each message must have role user, assistant, or system and string content.')
     }
     const trimmed = content.trim()
     if (!trimmed) continue
@@ -46,6 +46,10 @@ export async function completeChat(options: {
   siteUrl: string
   messages: ChatMessage[]
 }): Promise<string> {
+  const messagesToSend = options.messages.some(m => m.role === 'system')
+    ? options.messages
+    : [{ role: 'system', content: buildSystemPrompt() }, ...options.messages]
+
   const response = await fetch(OPENROUTER_URL, {
     method: 'POST',
     headers: {
@@ -56,10 +60,7 @@ export async function completeChat(options: {
     },
     body: JSON.stringify({
       model: CHAT_MODEL,
-      messages: [
-        { role: 'system', content: buildSystemPrompt() },
-        ...options.messages,
-      ],
+      messages: messagesToSend,
     }),
   })
 
@@ -86,6 +87,10 @@ export async function streamChat(options: {
   siteUrl: string
   messages: ChatMessage[]
 }): Promise<ReadableStream> {
+  const messagesToSend = options.messages.some(m => m.role === 'system')
+    ? options.messages
+    : [{ role: 'system', content: buildSystemPrompt() }, ...options.messages]
+
   const response = await fetch(OPENROUTER_URL, {
     method: 'POST',
     headers: {
@@ -96,10 +101,7 @@ export async function streamChat(options: {
     },
     body: JSON.stringify({
       model: CHAT_MODEL,
-      messages: [
-        { role: 'system', content: buildSystemPrompt() },
-        ...options.messages,
-      ],
+      messages: messagesToSend,
       stream: true,
     }),
   })
