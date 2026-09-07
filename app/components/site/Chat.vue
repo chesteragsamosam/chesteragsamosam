@@ -34,6 +34,27 @@ function useStarter(prompt: string) {
   void send()
 }
 
+async function typeOut(text: string, onUpdate: (s: string) => void) {
+  // Human-like per-character typing with slight jitter for punctuation
+  const base = 15 // ms per char
+  const punctuationDelay = 120
+  let out = ''
+  for (let i = 0; i < text.length; i++) {
+    out += text[i]
+    onUpdate(out)
+    // small adaptive delay
+    const ch = text[i]
+    const delay = /[\.\,\!\?\n]/.test(ch) ? punctuationDelay : base + Math.random() * 30
+    // eslint-disable-next-line no-await-in-loop
+    await new Promise((r) => setTimeout(r, delay))
+  }
+}
+
+const showTypingIndicator = computed(() => {
+  const last = messages.value[messages.value.length - 1]
+  return !!(pending.value && last && last.role === 'assistant' && (!last.content || last.content.length === 0))
+})
+
 async function send() {
   const content = draft.value.trim()
   if (!content || pending.value) return
@@ -43,82 +64,68 @@ async function send() {
     return
   }
 
+  // push user message
   messages.value.push({ role: 'user', content })
   draft.value = ''
   error.value = ''
   pending.value = true
   scrollToEnd()
 
+  // push placeholder assistant message we'll fill as we stream/type
+  messages.value.push({ role: 'assistant', content: '' })
+  const assistantIndex = messages.value.length - 1
+
   try {
-    const response = await fetch(apiUrl.value, {
+    const res = await fetch(apiUrl.value, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        messages: messages.value,
-      }),
+      body: JSON.stringify({ messages: messages.value }),
     })
 
-    if (!response.ok) {
-      throw new Error(`Server error: ${response.statusText}`)
+    if (!res.ok) {
+      // try to read a helpful error body
+      const body = await res.text().catch(() => '')
+      throw new Error(body || res.statusText)
     }
 
-    if (!response.body) {
-      throw new Error('No response body from server')
-    }
+    const contentType = String(res.headers.get('content-type') || '')
 
-    // The standalone Cloudflare Worker returns { reply }, while the local
-    // Nuxt API streams OpenRouter's SSE response.
-    if (response.headers.get('content-type')?.includes('application/json')) {
-      const payload = await response.json() as { reply?: unknown, statusMessage?: unknown }
-      if (typeof payload.reply !== 'string' || !payload.reply.trim()) {
-        throw new Error(typeof payload.statusMessage === 'string' ? payload.statusMessage : 'The digital twin returned an empty reply.')
+    // If the response is a JSON payload (common), read it then type it out.
+    if (contentType.includes('application/json')) {
+      const payload = await res.json()
+      const reply = typeof payload === 'string' ? payload : (payload && payload.reply) ? String(payload.reply) : JSON.stringify(payload)
+      await typeOut(reply, (s) => {
+        messages.value[assistantIndex].content = s
+        scrollToEnd()
+      })
+    }
+    // If the response has a readable stream, stream chunks as they arrive.
+    else if (res.body && typeof res.body.getReader === 'function') {
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder()
+      let acc = ''
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        acc += decoder.decode(value, { stream: true })
+        messages.value[assistantIndex].content = acc
+        scrollToEnd()
       }
-      messages.value.push({ role: 'assistant', content: payload.reply })
-      return
     }
-
-    // Add assistant message to stream into
-    messages.value.push({ role: 'assistant', content: '' })
-    const currentMessage = messages.value[messages.value.length - 1]
-
-    const reader = response.body.getReader()
-    const decoder = new TextDecoder()
-    let buffer = ''
-
-    while (true) {
-      const { value, done } = await reader.read()
-      if (done) break
-
-      buffer += decoder.decode(value, { stream: true })
-      const lines = buffer.split('\n')
-
-      // Keep the last partial line in the buffer
-      buffer = lines.pop() || ''
-
-      for (const line of lines) {
-        const trimmedLine = line.trim()
-        if (!trimmedLine || trimmedLine === 'data: [DONE]') continue
-
-        if (trimmedLine.startsWith('data: ')) {
-          try {
-            const data = JSON.parse(trimmedLine.slice(6))
-            const content = data.choices?.[0]?.delta?.content || ''
-            currentMessage.content += content
-            scrollToEnd()
-          }
-            catch (e) {
-              console.error('Error parsing SSE chunk:', e)
-            }
-        }
-      }
+    // Fallback: plain text
+    else {
+      const text = await res.text()
+      await typeOut(text, (s) => {
+        messages.value[assistantIndex].content = s
+        scrollToEnd()
+      })
     }
   }
   catch (err) {
     error.value = readError(err)
-    // Remove empty assistant message if request failed
-    if (messages.value[messages.value.length - 1].role === 'assistant' && !messages.value[messages.value.length - 1].content) {
-      messages.value.pop()
-    }
+    // remove the placeholder assistant message if it is empty
+    const last = messages.value[messages.value.length - 1]
+    if (last && last.role === 'assistant' && !last.content) messages.value.pop()
   }
   finally {
     pending.value = false
@@ -191,7 +198,14 @@ function onKeydown(event: KeyboardEvent) {
             />
           </div>
 
-          <p v-if="pending" class="border border-line bg-void/70 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
+          <div v-if="showTypingIndicator" class="max-w-[95%] px-3 py-2 text-sm leading-normal border border-line bg-void/70 text-dim font-mono">
+            <span class="typing-dots" aria-hidden="true">
+              <span class="dot" />
+              <span class="dot" />
+              <span class="dot" />
+            </span>
+          </div>
+          <p v-else-if="pending" class="border border-line bg-void/70 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
             Thinking…
           </p>
         </div>
@@ -250,4 +264,60 @@ function onKeydown(event: KeyboardEvent) {
 
 <style scoped>
 /* Reset container line-height & spacing */
+:deep(.markstream-vue),
+:deep(.compact-markdown) {
+  line-height: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Strip extra vertical margins from Markdown block elements */
+:deep(.markstream-vue p),
+:deep(.markstream-vue h1),
+:deep(.markstream-vue h2),
+:deep(.markstream-vue h3),
+:deep(.markstream-vue ul),
+:deep(.markstream-vue ol),
+:deep(.markstream-vue pre) {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Eliminate top/bottom gaps at the edges of the message box */
+:deep(.markstream-vue > *:first-child) {
+  margin-top: 0 !important;
+}
+
+:deep(.markstream-vue > *:last-child) {
+  margin-bottom: 0 !important;
+}
+
+/* Tighten list items spacing */
+:deep(.markstream-vue li) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Typing indicator dots */
+.typing-dots {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.typing-dots .dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.18;
+  animation: typing-dot 1s infinite linear;
+}
+.typing-dots .dot:nth-child(2) { animation-delay: 0.12s }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.24s }
+@keyframes typing-dot {
+  0% { transform: translateY(0); opacity: 0.18 }
+  30% { transform: translateY(-6px); opacity: 1 }
+  60% { transform: translateY(0); opacity: 0.4 }
+  100% { transform: translateY(0); opacity: 0.18 }
+}
 </style>
