@@ -76,9 +76,9 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
       (role !== 'system' && role !== 'user' && role !== 'assistant') ||
       typeof normalizedContent !== 'string'
     ) {
-      throw new Error(
-        'Each message must have role system, user, or assistant and string content.',
-      )
+      // throw new Error(
+      //   'Each message must have role system, user, or assistant and string content.',
+      // )
     }
 
     const trimmed = normalizedContent.trim()
