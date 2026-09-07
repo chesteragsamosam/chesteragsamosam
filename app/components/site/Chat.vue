@@ -35,6 +35,27 @@ function useStarter(prompt: string) {
   void send()
 }
 
+async function typeOut(text: string, onUpdate: (s: string) => void) {
+  // Human-like per-character typing with slight jitter for punctuation
+  const base = 15 // ms per char
+  const punctuationDelay = 120
+  let out = ''
+  for (let i = 0; i < text.length; i++) {
+    out += text[i]
+    onUpdate(out)
+    // small adaptive delay
+    const ch = text[i]
+    const delay = /[\.\,\!\?\n]/.test(ch) ? punctuationDelay : base + Math.random() * 30
+    // eslint-disable-next-line no-await-in-loop
+    await new Promise((r) => setTimeout(r, delay))
+  }
+}
+
+const showTypingIndicator = computed(() => {
+  const last = messages.value[messages.value.length - 1]
+  return !!(pending.value && last && last.role === 'assistant' && (!last.content || last.content.length === 0))
+})
+
 async function send() {
   const content = draft.value.trim()
   if (!content || pending.value) return
@@ -44,23 +65,68 @@ async function send() {
     return
   }
 
+  // push user message
   messages.value.push({ role: 'user', content })
   draft.value = ''
   error.value = ''
   pending.value = true
   scrollToEnd()
 
+  // push placeholder assistant message we'll fill as we stream/type
+  messages.value.push({ role: 'assistant', content: '' })
+  const assistantIndex = messages.value.length - 1
+
   try {
-    const payload = await $fetch<{ reply: string }>(apiUrl.value, {
+    const res = await fetch(apiUrl.value, {
       method: 'POST',
-      body: {
-        messages: messages.value,
-      },
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: messages.value }),
     })
-    messages.value.push({ role: 'assistant', content: payload.reply })
+
+    if (!res.ok) {
+      // try to read a helpful error body
+      const body = await res.text().catch(() => '')
+      throw new Error(body || res.statusText)
+    }
+
+    const contentType = String(res.headers.get('content-type') || '')
+
+    // If the response is a JSON payload (common), read it then type it out.
+    if (contentType.includes('application/json')) {
+      const payload = await res.json()
+      const reply = typeof payload === 'string' ? payload : (payload && payload.reply) ? String(payload.reply) : JSON.stringify(payload)
+      await typeOut(reply, (s) => {
+        messages.value[assistantIndex].content = s
+        scrollToEnd()
+      })
+    }
+    // If the response has a readable stream, stream chunks as they arrive.
+    else if (res.body && typeof res.body.getReader === 'function') {
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder()
+      let acc = ''
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        acc += decoder.decode(value, { stream: true })
+        messages.value[assistantIndex].content = acc
+        scrollToEnd()
+      }
+    }
+    // Fallback: plain text
+    else {
+      const text = await res.text()
+      await typeOut(text, (s) => {
+        messages.value[assistantIndex].content = s
+        scrollToEnd()
+      })
+    }
   }
   catch (err) {
     error.value = readError(err)
+    // remove the placeholder assistant message if it is empty
+    const last = messages.value[messages.value.length - 1]
+    if (last && last.role === 'assistant' && !last.content) messages.value.pop()
   }
   finally {
     pending.value = false
@@ -136,7 +202,14 @@ function onKeydown(event: KeyboardEvent) {
             />
           </div>
 
-          <p v-if="pending" class="border border-line bg-void/70 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
+          <div v-if="showTypingIndicator" class="max-w-[95%] px-3 py-2 text-sm leading-normal border border-line bg-void/70 text-dim font-mono">
+            <span class="typing-dots" aria-hidden="true">
+              <span class="dot" />
+              <span class="dot" />
+              <span class="dot" />
+            </span>
+          </div>
+          <p v-else-if="pending" class="border border-line bg-void/70 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
             Thinking…
           </p>
         </div>
@@ -227,5 +300,28 @@ function onKeydown(event: KeyboardEvent) {
 :deep(.markstream-vue li) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+/* Typing indicator dots */
+.typing-dots {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.typing-dots .dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.18;
+  animation: typing-dot 1s infinite linear;
+}
+.typing-dots .dot:nth-child(2) { animation-delay: 0.12s }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.24s }
+@keyframes typing-dot {
+  0% { transform: translateY(0); opacity: 0.18 }
+  30% { transform: translateY(-6px); opacity: 1 }
+  60% { transform: translateY(0); opacity: 0.4 }
+  100% { transform: translateY(0); opacity: 0.18 }
 }
 </style>
