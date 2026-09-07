@@ -6,10 +6,41 @@ import {
   type ChatMessage,
 } from './types'
 
+function normalizeMessageContent(content: unknown): string | undefined {
+  if (typeof content === 'string') {
+    return content
+  }
+
+  if (Array.isArray(content)) {
+    const normalized = [...content]
+    if (normalized.length && normalized[normalized.length - 1] === '') {
+      normalized.pop()
+    }
+
+    const joined = normalized.join('')
+    return joined
+  }
+
+  return undefined
+}
+
 export function ensureSystemPrompt(messages: ChatMessage[]): ChatMessage[] {
-  const validMessages = messages.filter(message => message && typeof message.content === 'string' && message.content.trim().length > 0)
-  const systemMessage = validMessages.find(message => message.role === 'system')
-  const remainingMessages = validMessages.filter(message => message.role !== 'system')
+  const normalizedMessages = messages
+    .filter(Boolean)
+    .map((message) => {
+      const content = normalizeMessageContent(message.content)
+      if (typeof content !== 'string') {
+        return null
+      }
+      return {
+        ...message,
+        content,
+      }
+    })
+    .filter((message): message is ChatMessage => Boolean(message) && message.content.trim().length > 0)
+
+  const systemMessage = normalizedMessages.find(message => message.role === 'system')
+  const remainingMessages = normalizedMessages.filter(message => message.role !== 'system')
 
   return [
     ...(systemMessage ? [systemMessage] : [{ role: 'system', content: buildSystemPrompt() }]),
@@ -38,19 +69,19 @@ export function parseChatMessages(input: unknown): ChatMessage[] {
     }
 
     const role = (item as { role?: unknown }).role
-    const content = (item as { content?: unknown }).content
+    const normalizedContent = normalizeMessageContent((item as { content?: unknown }).content)
 
     // Client should only be allowed to send conversation messages.
     if (
       (role !== 'system' && role !== 'user' && role !== 'assistant') ||
-      typeof content !== 'string'
+      typeof normalizedContent !== 'string'
     ) {
       throw new Error(
         'Each message must have role system, user, or assistant and string content.',
       )
     }
 
-    const trimmed = content.trim()
+    const trimmed = normalizedContent.trim()
 
     // Ignore empty messages.
     if (!trimmed) {

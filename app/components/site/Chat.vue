@@ -77,9 +77,11 @@ async function send() {
   const assistantIndex = messages.value.length - 1
 
   try {
+    const requestMessages = messages.value.filter(message => message.content.trim().length > 0)
+    const systemMessage = requestMessages.find(message => message.role === 'system')
     const payloadMessages = [
-      { role: 'system' as const, content: buildSystemPrompt() },
-      ...messages.value.filter(message => message.role !== 'system'),
+      ...(systemMessage ? [systemMessage] : [{ role: 'system' as const, content: buildSystemPrompt() }]),
+      ...requestMessages.filter(message => message.role !== 'system'),
     ]
 
     const res = await fetch(apiUrl.value, {
