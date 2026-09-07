@@ -256,7 +256,7 @@ function onKeydown(event: KeyboardEvent) {
         :aria-label="open ? 'Hide digital twin chat' : 'Ask Chester'"
         @click="open = !open"
       >
-        {{ open ? 'Hide twin' : 'Ask Chester' }}
+        {{ open ? 'Hide twin' : `Let's Chat` }}
       </button>
     </div>
   </div>
