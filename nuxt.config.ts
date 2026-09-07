@@ -52,7 +52,7 @@ export default defineNuxtConfig({
       siteUrl,
       // A production static build has no same-origin /api/chat endpoint.
       // GitHub Actions injects the Worker URL at build time.
-      chatApiUrl: process.env.NUXT_PUBLIC_CHAT_API_URL || (process.env.NODE_ENV === 'production' ? '' : '/api/chat'),
+      chatApiUrl: process.env.NUXT_PUBLIC_CHAT_API_URL || '/api/chat'
     },
   },
   

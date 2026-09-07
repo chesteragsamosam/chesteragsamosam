@@ -210,6 +210,7 @@ function onKeydown(event: KeyboardEvent) {
             </button>
           </div>
           <p v-if="error" class="mb-2 text-xs leading-relaxed text-acid">{{ error }}</p>
+          <p>apiUrl {{ apiUrl }}</p>
           <p v-if="!apiUrl" class="mb-2 text-xs leading-relaxed text-mute">
             Chat needs a Worker URL for the live site. Locally, run <span class="font-mono text-ink">nuxt dev</span>.
           </p>

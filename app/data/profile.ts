@@ -78,11 +78,15 @@ export const profile = {
     ],
     education: [
       {
-        school: 'AMA University',
+        school: 'Kolehiyo ng Lungsod ng Lipa (2017-2021)',
+        degree: 'Bachelor of Science, Computer Science',
+      },
+      {
+        school: 'AMA University (2015-2017)',
         degree: 'Bachelor of Science, Computer Engineering',
       },
       {
-        school: 'Lipa City Colleges',
+        school: 'Lipa City Colleges (2013-2015)',
         degree: 'Bachelor of Science, Computer Engineering',
       },
     ],
