@@ -33,14 +33,8 @@ const ticker = [
             href="#contact"
             class="inline-flex cursor-pointer items-center gap-3 bg-acid px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-acid-ink transition hover:brightness-95"
           >
-            Start a conversation
+            Contact me
             <span aria-hidden="true">↗</span>
-          </a>
-          <a
-            href="#journey"
-            class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink transition hover:border-acid hover:text-acid"
-          >
-            Career journey
           </a>
           <a
             :href="profile.resume.file"
@@ -48,13 +42,16 @@ const ticker = [
             class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink transition hover:border-acid hover:text-acid"
           >
             {{ profile.resume.label }}
+            <span aria-hidden="true">↓</span>
           </a>
-          <NuxtLink
-            to="/cover-letter"
-            class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink transition hover:border-acid hover:text-acid"
+          <a
+            :href="profile.cv.file"
+            :download="profile.cv.name"
+            class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition hover:border-acid hover:text-acid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acid"
           >
-            Cover letter
-          </NuxtLink>
+            {{ profile.cv.label }}
+            <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
 

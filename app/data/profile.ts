@@ -50,9 +50,14 @@ export const profile = {
       linkedinLabel: 'linkedin.com/in/chesteragsamosam',
     },
     resume: {
-      file: '/chesteragsamosam/chester-agsamosam-resume.pdf',
-      label: 'Download resume',
+      file: '/chesteragsamosam/Chester%20Agsamosam%20Resume.pdf',
+      label: 'Download resume (PDF)',
       name: 'Chester-Agsamosam-Resume.pdf',
+    },
+    cv: {
+      file: '/chesteragsamosam/CHESTER%20AGSAMOSAM%20CV.docx',
+      label: 'Download CV (DOCX)',
+      name: 'Chester-Agsamosam-CV.docx',
     },
     skills: [
       { group: 'Core', items: ['Vue.js 2/3', 'TypeScript', 'JavaScript', 'Svelte'] },
@@ -136,4 +141,3 @@ export const profile = {
       },
     ],
   } as const
-  
