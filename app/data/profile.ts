@@ -17,10 +17,10 @@ export const profile = {
     snapshot: [
       { label: 'Role', value: 'Web App Developer' },
       { label: 'Focus', value: 'Vue.js · TypeScript' },
-      { label: 'Experience', value: '5 yrs · since 2020' },
+      { label: 'Experience', value: '9 yrs · since 2017' },
     ],
     headline:
-      'Frontend developer with 5 years of Vue.js and TypeScript experience shipping production web apps — including a major Philippine digital wallet — plus Laravel full-stack work and a practical use of AI to deliver cleaner, faster results.',
+      'Software Engineer with 9 years of software development experience, specializing for the last 5 years in high-scale frontend systems using Vue.js, Svelte, and TypeScript. Combines deep UI expertise—including production engineering for a major Philippine digital wallet—with Laravel full-stack range and AI-assisted workflows to build fast, resilient applications.',
     photo: {
       src: 'portrait.jpg',
       alt: 'Black-and-white portrait of Chester Agsamosam',
@@ -29,7 +29,7 @@ export const profile = {
       greeting: 'Dear Hiring Manager,',
       closing: 'Respectfully,',
       paragraphs: [
-      `I’m a developer with 5 years of experience building and maintaining production web applications. I currently work at Ascendion, where I contribute to a widely used digital wallet in the Philippines, working on new features, reusable components, bug fixes, and improvements to existing systems.`,
+      `I’m a developer with 9 years of experience building and maintaining production web applications. I currently work at Ascendion, where I contribute to a widely used digital wallet in the Philippines, working on new features, reusable components, bug fixes, and improvements to existing systems.`,
       'My strongest experience is in frontend development using Vue.js, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, with additional experience in Svelte. I also have experience with backend development, databases, APIs, and real-time data, which allows me to work across different parts of an application when needed.',
       'Before Ascendion, I worked as a Full-Stack Developer at Codabyte, where I worked on website development, database administration, real-time crypto data streaming, and resolving issues across the application.',
       'I also use AI tools in my day-to-day work when they can help me save time, explore solutions, or handle repetitive tasks. I still rely on my experience and understanding of the project to decide what actually works and how the final solution should be implemented.',
@@ -135,6 +135,22 @@ export const profile = {
               'Database administration and website design.',
               'Real-time crypto data streaming.',
               'Troubleshooting, debugging, and resolving defects across the stack.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'freelancing',
+        company: 'Freelancing',
+        tenure: '2020 — 2021',
+        span: '3 years',
+        roles: [
+          {
+            title: 'Web Application Developer',
+            dates: '2017 — 2020',
+            points: [
+              'Developed and maintained web applications for clients using a variety of technologies including JavaScript, HTML, CSS, Bootstrap, Tailwind, PHP, and MySQL.',
+              'Worked on a variety of projects including e-commerce websites, landing pages, and web applications.',
             ],
           },
         ],
