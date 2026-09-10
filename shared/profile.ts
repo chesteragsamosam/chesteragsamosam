@@ -37,7 +37,7 @@ export const profile = {
     ],
   },
   summary:
-    'Passionate and versatile frontend developer with full-stack experience building modern, responsive, and user-focused web applications. I have contributed to projects for a well-known digital wallet in the Philippines, working with modern frontend technologies and development practices. Today I use AI to move faster, solve harder problems, and raise the quality of work — without outsourcing the craft itself.',
+    'Passionate and versatile frontend developer with full-stack experience building modern, responsive, and user-focused web applications. I have contributed to projects for a well-known digital wallet in the Philippines, working with modern frontend technologies and development practices. Today, I use AI to move faster, solve harder problems, and raise the quality of work — without outsourcing the craft itself.',
   about: [
     'I build production frontend systems that have to feel effortless: clear structure, fast interaction, and components that survive real product pressure.',
     'My core stack is Vue.js 2/3, Svelte, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, with additional full-stack work in Laravel. I treat AI as a force multiplier on skills I already own — not a substitute for them.',
