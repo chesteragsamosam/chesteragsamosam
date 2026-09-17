@@ -1,0 +1,21 @@
+{
+  "name": "Chester Agsamosam Portfolio",
+  "short_name": "Chester Agsamosam",
+  "description": "Senior Frontend & Web Application Developer Portfolio of Chester Agsamosam",
+  "start_url": "/chesteragsamosam/",
+  "display": "standalone",
+  "background_color": "#050810",
+  "theme_color": "#050810",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,2 +1,44 @@
-User-Agent: *
-Disallow:
+# robots.txt for Chester Agsamosam Portfolio
+# https://chesteragsamosam.github.io/chesteragsamosam/
+
+User-agent: *
+Allow: /
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI Search & Retrieval Crawlers (GEO / AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap & LLM references
+Sitemap: https://chesteragsamosam.github.io/chesteragsamosam/sitemap.xml
+# AI documentation: https://chesteragsamosam.github.io/chesteragsamosam/llms.txt

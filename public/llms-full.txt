@@ -1,0 +1,64 @@
+# Chester Agsamosam — Comprehensive Developer Profile & Context
+
+> Full background, technical skills, production achievements, and professional timeline of Chester Agsamosam, Senior Frontend Developer and Web Application Engineer based in Lipa City, Batangas, Philippines.
+
+## Personal Information & Contact
+- **Full Name:** Chester Agsamosam
+- **Preferred Title:** Senior Frontend Developer / Web Application Developer
+- **Nationality:** Filipino
+- **Location:** Lipa City, Batangas, Philippines
+- **Email:** chesteragsamosam@gmail.com
+- **Phone:** +63 962 690 8392
+- **LinkedIn:** https://www.linkedin.com/in/chesteragsamosam
+- **GitHub:** https://github.com/chesteragsamosam
+- **Official Portfolio:** https://chesteragsamosam.github.io/chesteragsamosam/
+
+## Professional Overview
+Chester Agsamosam is a Software Engineer with 9 years of software development experience (since 2017), with deep specialization in high-scale frontend architecture using Vue.js (versions 2 and 3), Svelte, and TypeScript. 
+
+He combines enterprise UI expertise—including production engineering for a premier Philippine digital wallet serving millions of users—with Laravel full-stack range and AI-augmented development workflows.
+
+## Work Experience
+
+### 1. Ascendion (November 2021 — Present)
+- **Role:** Frontend Developer & Development Specialist
+- **Tenure:** 5+ years
+- **Key Contributions & Responsibilities:**
+  - Feature development, maintenance, and web component engineering for a leading e-wallet platform in the Philippines.
+  - Delivered production user interfaces meeting strict enterprise performance, security, and accessibility standards.
+  - Spearheaded frontend optimization and component refactoring for long-term maintainability and reuse.
+  - Proactively resolved technical bottlenecks during sprint refinement and conducted code reviews.
+  - Mentored junior and peer developers in modern frontend architecture and clean code practices.
+
+### 2. Codabyte (2020 — December 2021)
+- **Role:** Full Stack Developer / Engineer
+- **Tenure:** 1 year
+- **Key Contributions & Responsibilities:**
+  - Designed and implemented end-to-end web applications and relational databases.
+  - Developed real-time cryptocurrency data streaming mechanisms and interactive dashboard visualizers.
+  - Identified and resolved critical full-stack defects, improving stability and response times.
+
+### 3. Freelancing & Contract Development (2017 — 2020)
+- **Role:** Web Application Developer
+- **Tenure:** 3 years
+- **Key Contributions & Responsibilities:**
+  - Engineered custom web applications, e-commerce stores, and high-conversion landing pages for multiple international and domestic clients.
+  - Full-stack delivery using JavaScript, PHP, MySQL, HTML5, CSS3, Tailwind CSS, and Bootstrap.
+
+## Technical Skills & Stack
+- **Languages:** TypeScript, JavaScript (ES6+), PHP, HTML5, CSS3/SCSS, SQL
+- **Frontend Frameworks:** Vue.js (2 & 3), Composition API, Options API, Svelte, Nuxt 3/4
+- **Styling & UI:** Tailwind CSS, Bootstrap, Responsive & Mobile-First Design, CSS Grid/Flexbox
+- **Backend & Full-Stack:** Laravel, REST APIs, WebSocket / Real-time data streams, Cloudflare Workers
+- **Databases:** MySQL, PostgreSQL, SQLite
+- **Tooling & DevOps:** Vite, Git, GitHub Actions, GitHub Pages, pnpm, npm
+- **Methodologies:** Clean Architecture, Component-Driven Development, E-E-A-T SEO, AI-assisted development
+
+## Education
+- **Kolehiyo ng Lungsod ng Lipa (2017 — 2021):** Bachelor of Science in Computer Science
+- **AMA University (2015 — 2017):** Bachelor of Science in Computer Engineering coursework
+- **Lipa City Colleges (2013 — 2015):** Bachelor of Science in Computer Engineering coursework
+
+## Languages
+- **Filipino:** Native or bilingual proficiency
+- **English:** Working professional proficiency

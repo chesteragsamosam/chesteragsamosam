@@ -2,26 +2,59 @@
 import { profile } from '~/data/profile'
 
 const config = useRuntimeConfig()
+const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
 const portrait = `${config.app.baseURL}${profile.photo.src}`
-const pageUrl = `${config.public.siteUrl}/cover-letter`
+const pageUrl = `${siteUrl}/cover-letter`
+const ogImageUrl = `${siteUrl}/og-image.png`
+
 const today = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 }).format(new Date())
 
+const pageTitle = `Cover Letter | ${profile.name} — Senior Frontend Developer`
+const pageDescription = `Read ${profile.name}'s cover letter: 9 years building production web apps, Vue.js & TypeScript UI for major digital wallets, and full-stack range.`
+
+const { getBreadcrumbSchema } = useJsonLd()
+const breadcrumbs = getBreadcrumbSchema([
+  { name: 'Home', url: `${siteUrl}/` },
+  { name: 'Cover Letter', url: pageUrl },
+])
+
 useSeoMeta({
-  title: `Cover Letter — ${profile.name}`,
-  description: `Cover letter from ${profile.name}, ${profile.role}.`,
-  ogTitle: `Cover Letter — ${profile.name}`,
-  ogDescription: `Cover letter from ${profile.name}, ${profile.role}.`,
-  ogType: 'website',
+  title: pageTitle,
+  description: pageDescription,
+  author: profile.name,
+  robots: 'index, follow, max-image-preview:large',
+  // Open Graph
+  ogTitle: pageTitle,
+  ogDescription: pageDescription,
+  ogType: 'article',
   ogUrl: pageUrl,
-  robots: 'index, follow',
+  ogImage: ogImageUrl,
+  ogImageSecureUrl: ogImageUrl,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: `Cover Letter from ${profile.name}`,
+  ogSiteName: `${profile.name} Portfolio`,
+  ogLocale: 'en_US',
+  // Twitter Card
+  twitterCard: 'summary_large_image',
+  twitterTitle: pageTitle,
+  twitterDescription: pageDescription,
+  twitterImage: ogImageUrl,
+  twitterImageAlt: `Cover Letter from ${profile.name}`,
 })
 
 useHead({
   link: [{ rel: 'canonical', href: pageUrl }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(breadcrumbs),
+    },
+  ],
 })
 </script>
 

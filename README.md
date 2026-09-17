@@ -1,44 +1,134 @@
-# Chester Agsamosam
+# Chester Agsamosam — Senior Frontend & Web Application Developer Portfolio
 
-Frontend & web developer — portfolio and demos
+[![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat-square&logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Nuxt](https://img.shields.io/badge/Nuxt-4.x-00DC82?style=flat-square&logo=nuxt.js&logoColor=white)](https://nuxt.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white)](https://chesteragsamosam.github.io/chesteragsamosam/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
-Hi — I build polished, user-focused web experiences with a focus on frontend design and clear product thinking. This repository contains my public portfolio site and a few example projects I use to show how I approach design, accessibility, and performance.
+> Official portfolio, technical case notes, and interactive digital twin for **Chester Agsamosam**, a Software Engineer with 9 years of software development experience, specializing in high-scale frontend systems using **Vue.js (2 & 3)**, **TypeScript**, and **Svelte**. Includes production UI engineering for a leading Philippine digital wallet at Ascendion, full-stack Laravel range, technical SEO architecture, Schema structured data, and Core Web Vitals audit optimization.
 
-What recruiters will find here
-
-- A clean portfolio website with selected projects and short case notes (live at: https://chesteragsamosam.github.io/chesteragsamosam/)
-- Lightweight demos that highlight UI/UX work and frontend craftsmanship
-- Contact details and a short summary of the kind of roles I enjoy (frontend, product-focused engineering)
-
-Quick highlights
-
-- 5+ years working in frontend development, primarily Vue.js and TypeScript
-- Experience shipping production features for a leading digital wallet in the Philippines
-- Strong eye for UI polish, accessibility, and maintainable component design
-
-Selected projects (non-technical summaries)
-
-- Portfolio site — A simple, fast portfolio that showcases projects, case notes, and a short cover letter. Designed for clarity and easy navigation so recruiters can quickly see work samples.
-- Digital twin chat demo — A friendly chat demo used to show streaming responses and conversational UI patterns. It exists to demonstrate interaction design rather than backend complexity.
-
-If you'd like more detail on any project I can provide short case notes focused on impact, the problem solved, and outcomes (no heavy technical detail unless you want it).
-
-Skills (short list for recruiters)
-
-- Frontend: Vue.js (2 & 3), TypeScript, HTML, CSS, Tailwind
-- UX: Interaction design, accessibility considerations, microcopy and feedback
-- Tools: GitHub Pages, modern frontend tooling (used for building/deploying the portfolio)
-
-Availability & how to contact
-
-- Open to frontend or product-oriented engineering roles.
-- Email: chesteragsamosam@gmail.com
-- LinkedIn: https://www.linkedin.com/in/chesteragsamosam
-
-Notes for engineering teams (if you want technical details)
-
-If you are a developer or technical recruiter and want deployment or contributor notes, please see the full technical README in the repo history or get in touch and I’ll share the approach I used for builds and the chat demo.
+- 🌐 **Live Portfolio:** [https://chesteragsamosam.github.io/chesteragsamosam/](https://chesteragsamosam.github.io/chesteragsamosam/)
+- 📄 **Cover Letter:** [https://chesteragsamosam.github.io/chesteragsamosam/cover-letter](https://chesteragsamosam.github.io/chesteragsamosam/cover-letter)
+- 🤖 **AI Machine-Readable Profile:** [`llms.txt`](https://chesteragsamosam.github.io/chesteragsamosam/llms.txt) | [`llms-full.txt`](https://chesteragsamosam.github.io/chesteragsamosam/llms-full.txt)
+- 🗺️ **XML Sitemap:** [https://chesteragsamosam.github.io/chesteragsamosam/sitemap.xml](https://chesteragsamosam.github.io/chesteragsamosam/sitemap.xml)
 
 ---
 
-Thanks for visiting — feel free to email or message on LinkedIn if you'd like to see a tailored portfolio or discuss an opportunity.
+## ⚡ Quick Highlights
+
+- **9 Years of Software Development Experience** (since 2017), with 5+ continuous years dedicated to modern frontend architecture.
+- **Enterprise Scale UI:** Developed production features, design system components, and performance optimizations for a premier Philippine digital wallet used by millions.
+- **Core Technology Stack:** Vue.js (2/3, Composition API), TypeScript, Svelte, Tailwind CSS, Nuxt, and Laravel.
+- **Craft & Performance:** Statically generated with Nuxt, optimized for Core Web Vitals (LCP/CLS/INP), full Schema.org JSON-LD structured data, and responsive high-contrast aesthetics.
+
+---
+
+## 🚀 Quickstart & Local Development
+
+This portfolio is built using [Nuxt 4](https://nuxt.com/) and [Tailwind CSS v4](https://tailwindcss.com/) with static site generation for GitHub Pages.
+
+### Prerequisites
+- Node.js 22+
+- pnpm 11+ (`corepack enable` or `npm i -g pnpm`)
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/chesteragsamosam/chesteragsamosam.git
+cd chesteragsamosam
+pnpm install
+```
+
+### Running Locally
+
+Start the local development server:
+
+```bash
+pnpm run dev
+```
+
+Visit `http://localhost:3000` in your browser.
+
+### Building for Production
+
+Generate the static distribution bundle:
+
+```bash
+pnpm run build
+```
+
+Or generate static HTML directly for GitHub Pages:
+
+```bash
+pnpm run generate
+```
+
+Preview the statically generated output locally:
+
+```bash
+pnpm run preview
+```
+
+---
+
+## 🏗️ Architecture & Project Structure
+
+```text
+chesteragsamosam/
+├── app/
+│   ├── assets/css/        # Tailwind CSS and global style definitions
+│   ├── components/site/   # Reusable UI components (Hero, About, Journey, Skills, Chat)
+│   ├── composables/       # Vue composables (useJsonLd, physics, state)
+│   ├── data/              # Static profile information and career history
+│   ├── layouts/           # Default layout wrapper
+│   └── pages/             # File-based routes (index.vue, cover-letter.vue)
+├── public/                # Static assets (og-image.png, robots.txt, sitemap.xml, llms.txt)
+├── workers/digital-twin/  # Edge worker handling digital twin chat completions
+├── nuxt.config.ts         # Nuxt framework, fonts, preconnect, and Nitro SSG config
+└── README.md              # Project documentation and search index
+```
+
+---
+
+## 🎯 Projects & Selected Highlights
+
+1. **Portfolio & Digital Twin:**
+   - Responsive, dark-mode personal site featuring dynamic particle canvas, interactive career timeline, and an AI-powered conversational twin.
+   - Live at [chesteragsamosam.github.io/chesteragsamosam](https://chesteragsamosam.github.io/chesteragsamosam/)
+2. **Enterprise Digital Wallet UI (Ascendion):**
+   - Built resilient web-components and mission-critical payment workflows.
+   - Refactored legacy UI components to TypeScript and modern Vue standards, improving maintainability and reducing customer-facing defect rates.
+3. **Crypto Data Streaming (Codabyte):**
+   - Full-stack real-time data streaming dashboard with WebSocket integration and automated database indexing.
+
+---
+
+## 📬 Availability & Contact
+
+I am open to senior frontend engineering, UI architecture, and product-focused development roles.
+
+- **Email:** [chesteragsamosam@gmail.com](mailto:chesteragsamosam@gmail.com)
+- **LinkedIn:** [linkedin.com/in/chesteragsamosam](https://www.linkedin.com/in/chesteragsamosam)
+- **Location:** Lipa City, Batangas, Philippines (Available for Remote & Hybrid opportunities)
+
+---
+
+## 🤝 Contributing & Issue Reporting
+
+Contributions, bug reports, and suggestions are welcome! Please feel free to open an issue or submit a pull request:
+
+```bash
+git checkout -b feature/improvement
+git commit -m "feat: enhance site performance"
+git push origin feature/improvement
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE) — see the LICENSE file for details.

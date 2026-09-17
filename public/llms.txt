@@ -1,0 +1,35 @@
+# Chester Agsamosam — Senior Frontend Developer & Web Engineer
+
+> Software Engineer with 9 years of software development experience, specializing for the last 5 years in high-scale frontend systems using Vue.js (2 & 3), Svelte, and TypeScript. Combines deep UI engineering—including production features for a major Philippine digital wallet at Ascendion—with Laravel full-stack range and AI-assisted workflows.
+
+## Profile Summary
+
+- **Name:** Chester Agsamosam
+- **Role:** Senior Frontend Developer / Web Application Developer
+- **Location:** Lipa City, Batangas, Philippines
+- **Experience:** 9 years (since 2017)
+- **Primary Focus:** Vue.js (2/3), TypeScript, Svelte, Tailwind CSS, Laravel, Nuxt
+- **Current Role:** Frontend Developer & Development Specialist at Ascendion (2021 — Present)
+- **Email:** chesteragsamosam@gmail.com
+- **Portfolio:** https://chesteragsamosam.github.io/chesteragsamosam/
+- **GitHub:** https://github.com/chesteragsamosam
+- **LinkedIn:** https://www.linkedin.com/in/chesteragsamosam
+
+## Key Pages
+
+- [Portfolio Home](https://chesteragsamosam.github.io/chesteragsamosam/): Interactive developer portfolio with career journey, tech stack, and digital twin chat.
+- [Cover Letter](https://chesteragsamosam.github.io/chesteragsamosam/cover-letter): Direct note to hiring teams and recruiters detailing technical experience and engineering craft.
+- [Full LLM Context](https://chesteragsamosam.github.io/chesteragsamosam/llms-full.txt): Detailed background, full work history, and architecture notes for AI engines.
+
+## Technical Skills
+
+- **Core Frontend:** Vue.js 2/3, TypeScript, JavaScript (ESNext), Svelte, HTML5, CSS3
+- **CSS Frameworks & Systems:** Tailwind CSS, Bootstrap, Responsive Design, CSS Architecture
+- **Full-Stack & Backend:** Laravel, PHP, RESTful APIs, MySQL, Real-time Data Streaming
+- **Modern Tooling:** Nuxt, Vite, Git, GitHub Pages, Cloudflare Workers, AI-augmented engineering
+
+## Career Highlights
+
+- **Ascendion (2021 — Present):** Development Specialist & Frontend Developer. Contributes to a widely used digital wallet in the Philippines, building production UI under enterprise quality bars, web components, and frontend performance optimization.
+- **Codabyte (2020 — 2021):** Full Stack Developer. Real-time cryptocurrency data streaming, database administration, and end-to-end web application development.
+- **Freelance Web Developer (2017 — 2020):** Delivered client web applications, e-commerce stores, and responsive landing pages.

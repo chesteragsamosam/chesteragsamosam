@@ -20,8 +20,11 @@ const ticker = [
   <section id="top" class="relative min-h-svh pt-16">
     <div class="section-wrap grid min-h-[calc(100svh-4rem)] grid-cols-1 items-end gap-12 pb-10 pt-16 lg:grid-cols-12 lg:gap-8 lg:pb-16">
       <div class="relative z-10 lg:col-span-8">
-        <p class="kicker">{{ profile.location }}</p>
-        <h1 class="display mt-6 text-[clamp(3rem,10vw,9rem)] leading-none text-gradient">
+        <p class="kicker">{{ profile.location }} · {{ profile.title }}</p>
+        <h1
+          class="display mt-6 text-[clamp(3rem,10vw,9rem)] leading-none text-gradient"
+          aria-label="Chester Agsamosam — Senior Frontend and Web Application Developer"
+        >
           Chester
           <span class="block italic text-mute/80">Agsamosam</span>
         </h1>
@@ -61,9 +64,12 @@ const ticker = [
           <div class="absolute inset-0 border border-acid/40" aria-hidden="true" />
           <img
             :src="portrait"
-            :alt="profile.photo.alt"
+            :alt="`${profile.name} — Senior Frontend & Web Application Developer`"
             width="640"
             height="800"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             class="relative h-full w-full object-cover object-[center_18%] grayscale aspect-square"
           >
           <div class="absolute -right-2 -top-2 h-3 w-3 bg-acid" />
