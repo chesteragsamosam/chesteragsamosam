@@ -1,10 +1,10 @@
 # Chester Agsamosam — Comprehensive Developer Profile & Context
 
-> Full background, technical skills, production achievements, and professional timeline of Chester Agsamosam, Senior Frontend Developer and Web Application Engineer based in Lipa City, Batangas, Philippines.
+> Full background, technical skills, production achievements, and professional timeline of Chester Agsamosam, Software Engineer based in Lipa City, Batangas, Philippines.
 
 ## Personal Information & Contact
 - **Full Name:** Chester Agsamosam
-- **Preferred Title:** Senior Frontend Developer / Web Application Developer
+- **Preferred Title:** Software Engineer
 - **Nationality:** Filipino
 - **Location:** Lipa City, Batangas, Philippines
 - **Email:** chesteragsamosam@gmail.com

@@ -23,7 +23,7 @@ const ticker = [
         <p class="kicker">{{ profile.location }} · {{ profile.title }}</p>
         <h1
           class="display mt-6 text-[clamp(3rem,10vw,9rem)] leading-none text-gradient"
-          aria-label="Chester Agsamosam — Senior Frontend and Web Application Developer"
+          :aria-label="`${profile.name} — ${profile.title}`"
         >
           Chester
           <span class="block italic text-mute/80">Agsamosam</span>
@@ -64,7 +64,7 @@ const ticker = [
           <div class="absolute inset-0 border border-acid/40" aria-hidden="true" />
           <img
             :src="portrait"
-            :alt="`${profile.name} — Senior Frontend & Web Application Developer`"
+            :alt="`${profile.name} — ${profile.title}`"
             width="640"
             height="800"
             loading="eager"

@@ -1,4 +1,4 @@
-# Chester Agsamosam — Senior Frontend & Web Application Developer Portfolio
+# Chester Agsamosam — Software Engineer Portfolio
 
 [![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat-square&logo=vue.js&logoColor=white)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -109,7 +109,7 @@ chesteragsamosam/
 
 ## 📬 Availability & Contact
 
-I am open to senior frontend engineering, UI architecture, and product-focused development roles.
+I am open to software engineering roles, including UI architecture and product-focused development.
 
 - **Email:** [chesteragsamosam@gmail.com](mailto:chesteragsamosam@gmail.com)
 - **LinkedIn:** [linkedin.com/in/chesteragsamosam](https://www.linkedin.com/in/chesteragsamosam)

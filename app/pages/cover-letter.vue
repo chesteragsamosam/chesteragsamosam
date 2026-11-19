@@ -13,7 +13,7 @@ const today = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
 }).format(new Date())
 
-const pageTitle = `Cover Letter | ${profile.name} — Senior Frontend Developer`
+const pageTitle = `Cover Letter | ${profile.name} — ${profile.title}`
 const pageDescription = `Read ${profile.name}'s cover letter: 9 years building production web apps, Vue.js & TypeScript UI for major digital wallets, and full-stack range.`
 
 const { getBreadcrumbSchema } = useJsonLd()

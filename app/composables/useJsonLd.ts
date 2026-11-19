@@ -14,7 +14,7 @@ export function useJsonLd() {
     alternateName: ['Chester Agsamosam', 'CA', 'chesteragsamosam'],
     givenName: 'Chester',
     familyName: 'Agsamosam',
-    jobTitle: 'Senior Frontend & Web Application Developer',
+    jobTitle: profile.title,
     description: profile.headline,
     url: siteUrl,
     image: `${siteUrl}/${profile.photo.src}`,
@@ -87,7 +87,7 @@ export function useJsonLd() {
     '@type': 'ProfilePage',
     '@id': `${siteUrl}/#profilepage`,
     url: siteUrl,
-    name: `${profile.name} — Senior Frontend & Web App Developer Portfolio`,
+    name: `${profile.name} — Software Engineer Portfolio`,
     isPartOf: {
       '@id': websiteId,
     },

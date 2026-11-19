@@ -1,11 +1,11 @@
-# Chester Agsamosam — Senior Frontend Developer & Web Engineer
+# Chester Agsamosam — Software Engineer
 
 > Software Engineer with 9 years of software development experience, specializing for the last 5 years in high-scale frontend systems using Vue.js (2 & 3), Svelte, and TypeScript. Combines deep UI engineering—including production features for a major Philippine digital wallet at Ascendion—with Laravel full-stack range and AI-assisted workflows.
 
 ## Profile Summary
 
 - **Name:** Chester Agsamosam
-- **Role:** Senior Frontend Developer / Web Application Developer
+- **Role:** Software Engineer
 - **Location:** Lipa City, Batangas, Philippines
 - **Experience:** 9 years (since 2017)
 - **Primary Focus:** Vue.js (2/3), TypeScript, Svelte, Tailwind CSS, Laravel, Nuxt
