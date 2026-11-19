@@ -5,6 +5,6 @@ export type ChatMessage = {
   content: string
 }
 
-export const CHAT_MODEL = 'inclusionai/ling-3.0-flash-fin:free'
+export const CHAT_MODEL = 'google/gemma-4-31b-it:free'
 export const MAX_CHAT_MESSAGES = 20
 export const MAX_MESSAGE_LENGTH = 16000
