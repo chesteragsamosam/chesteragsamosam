@@ -1,6 +1,6 @@
 import { buildSystemPrompt } from './system-prompt'
 import {
-  CHAT_MODEL,
+  CHAT_MODELS,
   MAX_CHAT_MESSAGES,
   MAX_MESSAGE_LENGTH,
   type ChatMessage,
@@ -133,7 +133,7 @@ async function createOpenRouterRequest(options: {
       'X-Title': 'Chester Agsamosam',
     },
     body: JSON.stringify({
-      model: CHAT_MODEL,
+      models: CHAT_MODELS,
       messages: messagesToSend,
       ...(options.stream ? { stream: true } : {}),
     }),

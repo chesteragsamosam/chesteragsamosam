@@ -55,6 +55,35 @@ jobs:
         with:
           path: .output/public
 
+  deploy-worker:
+    # The chat API is a separate Cloudflare Worker; ship it on every push so
+    # changes under shared/chat (e.g. the model list) actually go live.
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Check Cloudflare token
+        id: token
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN is not set; skipping the chat Worker deploy."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.token.outputs.present == 'true'
+
+      - name: Deploy chat Worker
+        if: steps.token.outputs.present == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --config workers/digital-twin/wrangler.toml
+
   deploy:
     environment:
       name: github-pages
