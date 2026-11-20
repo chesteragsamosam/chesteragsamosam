@@ -56,9 +56,39 @@ useHead({
     },
   ],
 })
+
+// Import breadcrumb composable for URL normalization
+import { useBreadcrumbs } from '~/composables/useBreadcrumbs'
+
+const visibleBreadcrumbs = useBreadcrumbs([
+  { name: 'Home', url: `${siteUrl}/` },
+  { name: 'Cover Letter', url: pageUrl },
+])
 </script>
 
 <template>
+  <!-- Breadcrumb Navigation (AC4) -->
+  <nav aria-label="Breadcrumb" class="mb-8">
+    <ol class="flex items-center space-x-2 text-sm">
+      <li>
+        <a href="/" rel="home" class="text-gray-500 hover:text-acid">
+          Home
+        </a>
+      </li>
+      <li class="text-gray-400">/</li>
+      <li>
+        <a :href="pageUrl" rel="bookmark" class="text-acid hover:underline">
+          {{ profile.name }} — Cover Letter
+        </a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- JSON-LD for search engines (AC5) -->
+  <script type="application/ld+json">
+    {{ getBreadcrumbSchema(visibleBreadcrumbs) | json }}
+  </script>
+
   <main id="main" class="relative pt-16">
     <div class="section-wrap py-16 sm:py-24">
       <p class="kicker">Cover letter</p>
