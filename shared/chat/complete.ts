@@ -121,7 +121,6 @@ async function createOpenRouterRequest(options: {
   siteUrl: string
   messages: ChatMessage[]
   model: string
-  stream?: boolean
 }): Promise<Response> {
   const messagesToSend = buildChatMessages(options.messages)
 
@@ -136,7 +135,6 @@ async function createOpenRouterRequest(options: {
     body: JSON.stringify({
       model: options.model,
       messages: messagesToSend,
-      ...(options.stream ? { stream: true } : {}),
     }),
   })
 }
@@ -176,7 +174,7 @@ async function completeWithModel(options: {
   messages: ChatMessage[]
   model: string
 }): Promise<string> {
-  const response = await createOpenRouterRequest({ ...options, stream: false })
+  const response = await createOpenRouterRequest(options)
   const payload = await response.json().catch(() => null) as OpenRouterPayload
 
   if (!response.ok || payload?.error) {
@@ -209,30 +207,4 @@ export async function completeChat(options: {
     }
   }
   throw new Error(`All chat models failed. ${failures.join(' | ')}`)
-}
-
-export async function streamChat(options: {
-  apiKey: string
-  siteUrl: string
-  messages: ChatMessage[]
-}): Promise<ReadableStream> {
-  const response = await createOpenRouterRequest({
-    ...options,
-    model: CHAT_MODELS[0]!,
-    stream: true,
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-
-    throw new Error(
-      `OpenRouter stream request failed: ${response.status} ${errorText}`,
-    )
-  }
-
-  if (!response.body) {
-    throw new Error('OpenRouter returned an empty response body.')
-  }
-
-  return response.body
 }
