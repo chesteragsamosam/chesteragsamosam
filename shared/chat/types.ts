@@ -8,6 +8,7 @@ export type ChatMessage = {
 // completeChat tries these in order, so one retired or failing free model
 // does not take the chat down.
 export const CHAT_MODELS = [
+  'respan/span-01-lite:free',
   'particle-ai/particle-1:free',
 ]
 export const MAX_CHAT_MESSAGES = 20
