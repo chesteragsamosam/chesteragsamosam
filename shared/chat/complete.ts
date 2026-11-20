@@ -120,6 +120,7 @@ async function createOpenRouterRequest(options: {
   apiKey: string
   siteUrl: string
   messages: ChatMessage[]
+  model: string
   stream?: boolean
 }): Promise<Response> {
   const messagesToSend = buildChatMessages(options.messages)
@@ -133,52 +134,81 @@ async function createOpenRouterRequest(options: {
       'X-Title': 'Chester Agsamosam',
     },
     body: JSON.stringify({
-      models: CHAT_MODELS,
+      model: options.model,
       messages: messagesToSend,
       ...(options.stream ? { stream: true } : {}),
     }),
   })
 }
 
+type OpenRouterPayload = {
+  error?: {
+    message?: string
+    metadata?: {
+      raw?: unknown
+      provider_name?: string
+    }
+  }
+  choices?: Array<{
+    message?: {
+      content?: string
+    }
+  }>
+} | null
+
+/** OpenRouter's top-level message is often just "Provider returned error";
+ * the useful part is in error.metadata.raw. */
+function describeOpenRouterError(model: string, status: number, payload: OpenRouterPayload): string {
+  const error = payload?.error
+  const raw = error?.metadata?.raw
+  const rawText = typeof raw === 'string' ? raw : raw ? JSON.stringify(raw) : ''
+  const provider = error?.metadata?.provider_name
+  return [
+    `${model} (${status}${provider ? `, ${provider}` : ''})`,
+    error?.message || 'OpenRouter request failed.',
+    rawText.slice(0, 300),
+  ].filter(Boolean).join(': ')
+}
+
+async function completeWithModel(options: {
+  apiKey: string
+  siteUrl: string
+  messages: ChatMessage[]
+  model: string
+}): Promise<string> {
+  const response = await createOpenRouterRequest({ ...options, stream: false })
+  const payload = await response.json().catch(() => null) as OpenRouterPayload
+
+  if (!response.ok || payload?.error) {
+    throw new Error(describeOpenRouterError(options.model, response.status, payload))
+  }
+
+  const reply = payload?.choices?.[0]?.message?.content?.trim()
+  if (!reply) {
+    throw new Error(`${options.model}: the model returned an empty reply.`)
+  }
+  return reply
+}
+
+/** Tries each model in CHAT_MODELS in order, so one retired or failing free
+ * model does not take the chat down. */
 export async function completeChat(options: {
   apiKey: string
   siteUrl: string
   messages: ChatMessage[]
 }): Promise<string> {
-  const response = await createOpenRouterRequest({
-    ...options,
-    stream: false,
-  })
-
-  const payload = await response.json().catch(() => null) as {
-    error?: {
-      message?: string
+  const failures: string[] = []
+  for (const model of CHAT_MODELS) {
+    try {
+      return await completeWithModel({ ...options, model })
     }
-    choices?: Array<{
-      message?: {
-        content?: string
-      }
-    }>
-  } | null
-
-  if (!response.ok) {
-    const detail =
-      payload?.error?.message ||
-      response.statusText
-
-    throw new Error(
-      detail || 'OpenRouter request failed.',
-    )
+    catch (error) {
+      const detail = error instanceof Error ? error.message : String(error)
+      console.error('OpenRouter model failed:', detail)
+      failures.push(detail)
+    }
   }
-
-  const reply =
-    payload?.choices?.[0]?.message?.content?.trim()
-
-  if (!reply) {
-    throw new Error('The model returned an empty reply.')
-  }
-
-  return reply
+  throw new Error(`All chat models failed. ${failures.join(' | ')}`)
 }
 
 export async function streamChat(options: {
@@ -188,6 +218,7 @@ export async function streamChat(options: {
 }): Promise<ReadableStream> {
   const response = await createOpenRouterRequest({
     ...options,
+    model: CHAT_MODELS[0]!,
     stream: true,
   })
 

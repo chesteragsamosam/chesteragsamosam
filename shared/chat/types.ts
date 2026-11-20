@@ -5,8 +5,8 @@ export type ChatMessage = {
   content: string
 }
 
-// OpenRouter tries these in order, so one free model being retired does not
-// take the chat down. OpenRouter accepts at most 3 fallbacks here.
+// completeChat tries these in order, so one retired or failing free model
+// does not take the chat down.
 export const CHAT_MODELS = [
   'google/gemma-4-31b-it:free',
   'google/gemma-4-26b-a4b-it:free',
