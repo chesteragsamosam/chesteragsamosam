@@ -112,10 +112,34 @@ export function useJsonLd() {
     }
   }
 
+  // Optional JobPosting schema for enhanced search results (AC8)
+  const jobPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: `${profile.name} — Software Engineer Portfolio`,
+    description: profile.headline,
+    jobPositionTitle: profile.title,
+    company: {
+      '@type': 'Organization',
+      name: 'Chester Agsamosam',
+      url: siteUrl,
+    },
+    applicantLocation: {
+      '@type': 'SameAs',
+      sameAs: `https://www.linkedin.com/in/${profile.contact.linkedinLabel.replace('linkedin.com/', '')}`,
+    },
+    applicationProcess: {
+      '@type': 'EmailContactPoint',
+      contactType: 'Other',
+      email: profile.contact.email,
+    },
+  }
+
   return {
     personSchema,
     websiteSchema,
     profilePageSchema,
+    jobPostingSchema,
     getBreadcrumbSchema,
     siteUrl,
   }

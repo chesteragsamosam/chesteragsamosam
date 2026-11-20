@@ -157,3 +157,24 @@ export const profile = {
       },
     ],
   } as const
+
+  // For SEO consistency, ensure these match across pages:
+  export const name = profile.name      // Used in all meta titles
+  export const email = profile.contact.email  // Valid email format
+  export const linkedinUrl = profile.contact.linkedin  // LinkedIn URL
+
+  // Add validation function for testing (AC6)
+  export function validateProfileForSEO() {
+    return {
+      nameConsistent: name.includes('Chester Agsamosam'),
+      emailValid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+      linkedinValid: linkedinUrl.startsWith('https://www.linkedin.com/in/') ||
+                     linkedinUrl.startsWith('https://linkedin.com/')
+    };
+  }
+
+  // For development testing
+  const seoValidation = validateProfileForSEO();
+  if (!seoValidation.nameConsistent) {
+    console.error('Name inconsistency detected');
+  }

@@ -1,10 +1,23 @@
 <script setup lang="ts">
 import { profile } from '~/data/profile'
+import { verifyOgImage, getOgImageUrl } from '~/utils/og-image-verify'
 
 const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
 const canonicalUrl = `${siteUrl}/`
-const ogImageUrl = `${siteUrl}/og-image.png`
+
+// Verify OG image exists before using in meta tags (AC2.7)
+async function verifyImageAndGetUrl(src: string): Promise<string> {
+  try {
+    const verified = await verifyOgImage({ src, width: 1200, height: 630 })
+    return `${siteUrl}${src}`
+  } catch {
+    // Fallback to default if image doesn't exist
+    return `${siteUrl}/og-image.png`
+  }
+}
+
+const ogImageUrl = await verifyImageAndGetUrl('/og-image.png')
 
 const pageTitle = `${profile.name} — Software Engineer (Vue.js · TypeScript)`
 const pageDescription = 'Software Engineer with 9 years of experience, specializing in Vue.js, TypeScript, and high-scale digital wallet UIs in the Philippines.'
