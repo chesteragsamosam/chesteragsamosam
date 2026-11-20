@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { profile } from '~/data/profile'
     <div class="section-wrap">
       <SiteReveal>
         <div class="flex items-end justify-between gap-6">
-          <p class="kicker">03 — Capabilities</p>
+          <p class="kicker">04 — Capabilities</p>
           <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-dim">Stack</span>
         </div>
         <div class="rule mt-6" />

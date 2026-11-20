@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 </script>
 
 <template>
@@ -16,9 +16,9 @@ import { profile } from '~/data/profile'
       <div class="mt-12 grid gap-12 lg:grid-cols-12">
         <SiteReveal class="lg:col-span-5" delay="80ms">
           <h2 class="display text-5xl sm:text-6xl lg:text-7xl">
-            Frontend with
-            <span class="italic">full-stack</span>
-            range.
+            Agents that
+            <span class="italic">actually</span>
+            ship.
           </h2>
         </SiteReveal>
         <div class="space-y-6 text-lg leading-relaxed text-mute lg:col-span-7">

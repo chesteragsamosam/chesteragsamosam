@@ -1,4 +1,4 @@
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 
 export function useJsonLd() {
   const config = useRuntimeConfig()
@@ -45,6 +45,12 @@ export function useJsonLd() {
       'https://github.com/chesteragsamosam',
     ],
     knowsAbout: [
+      'AI Agents',
+      'Agentic Engineering',
+      'Large Language Models',
+      'Workflow Automation',
+      'Retrieval-Augmented Generation',
+      'Model Context Protocol',
       'Vue.js',
       'Vue 3',
       'TypeScript',
@@ -58,7 +64,6 @@ export function useJsonLd() {
       'Web Components',
       'Nuxt.js',
       'Full-Stack Engineering',
-      'AI-assisted Software Development',
     ],
     knowsLanguage: profile.languages.map((l) => ({
       '@type': 'Language',
@@ -87,7 +92,7 @@ export function useJsonLd() {
     '@type': 'ProfilePage',
     '@id': `${siteUrl}/#profilepage`,
     url: siteUrl,
-    name: `${profile.name} — Software Engineer Portfolio`,
+    name: `${profile.name} — AI Agentic Engineer Portfolio`,
     isPartOf: {
       '@id': websiteId,
     },

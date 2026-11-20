@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { profile } from '~/data/profile'
     <div class="section-wrap">
       <SiteReveal>
         <div class="flex items-end justify-between gap-6">
-          <p class="kicker">04 — Contact</p>
+          <p class="kicker">05 — Contact</p>
           <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-dim">Open channel</span>
         </div>
         <div class="rule mt-6" />
@@ -16,11 +16,11 @@ import { profile } from '~/data/profile'
       <div class="mt-12 grid items-end gap-12 lg:grid-cols-12">
         <SiteReveal class="lg:col-span-7">
           <h2 class="display text-5xl sm:text-7xl">
-            Let’s build something
-            <span class="italic text-acid">sharp.</span>
+            Let’s put an agent
+            <span class="italic text-acid">to work.</span>
           </h2>
           <p class="mt-6 max-w-lg text-lg text-mute">
-            Available for select frontend and full-stack work. Email, call, or find me on LinkedIn.
+            Tell me the task that eats your team’s week. I’ll reply with whether an agent can take it on, and what a first version would look like. Hiring for a full-time role? Same inbox.
           </p>
         </SiteReveal>
 

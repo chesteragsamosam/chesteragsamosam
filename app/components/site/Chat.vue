@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 import { buildSystemPrompt } from '#shared/chat/system-prompt'
 import type { ChatMessage } from '#shared/chat/types'
 import Markdown from './Markdown.vue'

@@ -1,28 +1,38 @@
-# Chester Agsamosam — Software Engineer
+# Chester Agsamosam — AI Agentic Engineer
 
-> Software Engineer with 9 years of software development experience, specializing for the last 5 years in high-scale frontend systems using Vue.js (2 & 3), Svelte, and TypeScript. Combines deep UI engineering—including production features for a major Philippine digital wallet at Ascendion—with Laravel full-stack range and AI-assisted workflows.
+> AI agentic engineer available for client work. Builds custom AI agents, AI features inside existing products, and workflow automations, backed by 9 years of production web engineering (since 2017), including frontend systems for a major Philippine digital wallet at Ascendion.
 
 ## Profile Summary
 
 - **Name:** Chester Agsamosam
-- **Role:** Software Engineer
-- **Location:** Lipa City, Batangas, Philippines
+- **Role:** AI Agentic Engineer
+- **Location:** Lipa City, Batangas, Philippines (works remotely with clients worldwide)
 - **Experience:** 9 years (since 2017)
-- **Primary Focus:** Vue.js (2/3), TypeScript, Svelte, Tailwind CSS, Laravel, Nuxt
+- **Primary Focus:** AI agents, tool calling, MCP, RAG, workflow automation, TypeScript, Vue/Nuxt, Svelte, Laravel
 - **Current Role:** Frontend Developer & Development Specialist at Ascendion (2021 — Present)
 - **Email:** chesteragsamosam@gmail.com
 - **Portfolio:** https://chesteragsamosam.github.io/chesteragsamosam/
 - **GitHub:** https://github.com/chesteragsamosam
 - **LinkedIn:** https://www.linkedin.com/in/chesteragsamosam
 
+## Services
+
+- **Custom AI agents:** Tool-using agents and multi-step workflows with human approval steps, guardrails, and logging.
+- **AI inside your product:** Knowledge-grounded chat, retrieval (RAG), streaming UI, model and cost tuning.
+- **Workflow automation:** API and CRM integrations, email and document processing, scheduled agents, MCP servers.
+- **Web apps, built AI-first:** Vue, Nuxt, Svelte, TypeScript, Laravel back ends, edge deployment.
+
+Process: scope one high-value workflow, prototype on real data, harden with evals and guardrails, hand off with docs.
+
 ## Key Pages
 
-- [Portfolio Home](https://chesteragsamosam.github.io/chesteragsamosam/): Interactive developer portfolio with career journey, tech stack, and digital twin chat.
+- [Portfolio Home](https://chesteragsamosam.github.io/chesteragsamosam/): Services for clients, career journey, tech stack, and an AI digital twin chat agent.
 - [Cover Letter](https://chesteragsamosam.github.io/chesteragsamosam/cover-letter): Direct note to hiring teams and recruiters detailing technical experience and engineering craft.
 - [Full LLM Context](https://chesteragsamosam.github.io/chesteragsamosam/llms-full.txt): Detailed background, full work history, and architecture notes for AI engines.
 
 ## Technical Skills
 
+- **Agentic:** AI agents, tool calling, MCP, RAG, prompt and eval design, Claude Code, OpenRouter
 - **Core Frontend:** Vue.js 2/3, TypeScript, JavaScript (ESNext), Svelte, HTML5, CSS3
 - **CSS Frameworks & Systems:** Tailwind CSS, Bootstrap, Responsive Design, CSS Architecture
 - **Full-Stack & Backend:** Laravel, PHP, RESTful APIs, MySQL, Real-time Data Streaming

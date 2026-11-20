@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 
 const config = useRuntimeConfig()
 const portrait = `${config.app.baseURL}${profile.photo.src}`
 
 const ticker = [
-  'Vue.js',
+  'AI agents',
+  'Workflow automation',
+  'Tool calling · MCP',
+  'RAG',
+  'LLM product features',
   'TypeScript',
-  'Svelte',
+  'Vue · Nuxt · Svelte',
   'Laravel',
-  'Tailwind CSS',
-  'AI-augmented craft',
-  'Digital wallet UI',
-  'Mentorship',
+  'Production-grade',
 ]
 </script>
 
@@ -36,26 +37,29 @@ const ticker = [
             href="#contact"
             class="inline-flex cursor-pointer items-center gap-3 bg-acid px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-acid-ink transition hover:brightness-95"
           >
-            Contact me
+            Start a project
             <span aria-hidden="true">↗</span>
           </a>
           <a
-            :href="profile.resume.file"
-            :download="profile.resume.name"
+            href="#services"
             class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink transition hover:border-acid hover:text-acid"
           >
-            {{ profile.resume.label }}
-            <span aria-hidden="true">↓</span>
-          </a>
-          <a
-            :href="profile.cv.file"
-            :download="profile.cv.name"
-            class="inline-flex cursor-pointer items-center gap-3 border border-line-strong px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition hover:border-acid hover:text-acid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acid"
-          >
-            {{ profile.cv.label }}
+            See services
             <span aria-hidden="true">↓</span>
           </a>
         </div>
+        <p class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
+          <span>Hiring?</span>
+          <a :href="profile.resume.file" :download="profile.resume.name" class="text-mute underline-offset-4 transition hover:text-acid hover:underline">
+            {{ profile.resume.label }} ↓
+          </a>
+          <a :href="profile.cv.file" :download="profile.cv.name" class="text-mute underline-offset-4 transition hover:text-acid hover:underline">
+            {{ profile.cv.label }} ↓
+          </a>
+          <NuxtLink to="/cover-letter" class="text-mute underline-offset-4 transition hover:text-acid hover:underline">
+            Cover letter →
+          </NuxtLink>
+        </p>
       </div>
 
       <aside class="flex flex-col justify-between gap-10 border-t border-line pt-8 lg:col-span-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 
 const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
 const canonicalUrl = `${siteUrl}/`
 const ogImageUrl = `${siteUrl}/og-image.png`
 
-const pageTitle = `${profile.name} — Software Engineer (Vue.js · TypeScript)`
-const pageDescription = 'Software Engineer with 9 years of experience, specializing in Vue.js, TypeScript, and high-scale digital wallet UIs in the Philippines.'
+const pageTitle = `${profile.name} — AI Agentic Engineer · AI Agents & Automation`
+const pageDescription = 'AI agentic engineer for hire. I build custom AI agents, AI features inside products, and workflow automations, backed by 9 years of production web engineering.'
 
 const { personSchema, websiteSchema, profilePageSchema } = useJsonLd()
 
@@ -17,7 +17,7 @@ useSeoMeta({
   author: profile.name,
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   // Open Graph
-  ogTitle: `${profile.name} — Software Engineer`,
+  ogTitle: `${profile.name} — AI Agentic Engineer`,
   ogDescription: pageDescription,
   ogType: 'profile',
   ogUrl: canonicalUrl,
@@ -25,15 +25,15 @@ useSeoMeta({
   ogImageSecureUrl: ogImageUrl,
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  ogImageAlt: `${profile.name} — Software Engineer Portfolio`,
+  ogImageAlt: `${profile.name} — AI Agentic Engineer Portfolio`,
   ogSiteName: `${profile.name} Portfolio`,
   ogLocale: 'en_US',
   // Twitter Card
   twitterCard: 'summary_large_image',
-  twitterTitle: `${profile.name} — Software Engineer`,
+  twitterTitle: `${profile.name} — AI Agentic Engineer`,
   twitterDescription: pageDescription,
   twitterImage: ogImageUrl,
-  twitterImageAlt: `${profile.name} — Software Engineer Portfolio`,
+  twitterImageAlt: `${profile.name} — AI Agentic Engineer Portfolio`,
 })
 
 useHead({
@@ -43,7 +43,7 @@ useHead({
   meta: [
     {
       name: 'keywords',
-      content: 'Chester Agsamosam, Chester Agsamosam portfolio, Software Engineer Philippines, Vue.js Developer, TypeScript Engineer, Svelte Developer, Web Application Developer Lipa City, Ascendion Developer',
+      content: 'Chester Agsamosam, AI Agentic Engineer, AI agent developer for hire, custom AI agents, AI automation, LLM integration, Software Engineer Philippines, Vue.js Developer, TypeScript Engineer, Svelte Developer, Web Application Developer Lipa City, Ascendion Developer',
     },
   ],
   script: [
@@ -61,6 +61,7 @@ useHead({
     <SiteParticles />
     <SiteHero />
     <SiteAbout />
+    <SiteServices />
     <SiteJourney />
     <SiteSkills />
     <SiteContact />

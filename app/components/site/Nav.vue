@@ -4,6 +4,7 @@ const isHome = computed(() => route.path === '/' || route.path === '')
 
 const sections = [
   { to: '/#about', label: 'About' },
+  { to: '/#services', label: 'Services' },
   { to: '/#journey', label: 'Journey' },
   { to: '/#skills', label: 'Skills' },
   { to: '/cover-letter', label: 'Cover letter' },

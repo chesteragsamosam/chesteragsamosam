@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 
 const root = ref<HTMLElement | null>(null)
 const scrollY = ref(0)
@@ -27,7 +27,7 @@ const line = computed(() => {
     <div class="section-wrap">
       <SiteReveal>
         <div class="flex items-end justify-between gap-6">
-          <p class="kicker">02 — Career journey</p>
+          <p class="kicker">03 — Career journey</p>
           <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-dim">2020 — Present</span>
         </div>
         <div class="rule mt-6" />

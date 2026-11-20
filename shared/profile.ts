@@ -1,8 +1,8 @@
 export const profile = {
   name: 'Chester Agsamosam',
   shortName: 'CA',
-  role: 'Software Engineer',
-  title: 'Software Engineer',
+  role: 'AI Agentic Engineer',
+  title: 'AI Agentic Engineer',
   location: 'Lipa City, Batangas, Philippines',
   birthDate: 'April 2, 1997',
   nationality: 'Filipino',
@@ -15,12 +15,13 @@ export const profile = {
   skinColor: 'Brown',
   ethnicity: 'Filipino',
   snapshot: [
-    { label: 'Role', value: 'Software Engineer' },
-    { label: 'Focus', value: 'Vue.js · TypeScript' },
+    { label: 'Role', value: 'AI Agentic Engineer' },
+    { label: 'Builds', value: 'Agents · AI apps · Web' },
     { label: 'Experience', value: '9 yrs · since 2017' },
+    { label: 'Clients', value: 'Remote · worldwide' },
   ],
   headline:
-    'Software Engineer with 9 years of software development experience, specializing for the last 5 years in high-scale frontend systems using Vue.js, Svelte, and TypeScript. Combines deep UI expertise—including production engineering for a major Philippine digital wallet—with Laravel full-stack range and AI-assisted workflows to build fast, resilient applications.',
+    'I design and ship AI agents that do real work inside your product and your operations: answering customers, running workflows, and connecting to the tools you already use. Nine years of production engineering, including a major Philippine digital wallet, means they run reliably after launch, not only in a demo.',
   photo: {
     src: 'portrait.jpg',
     alt: 'Black-and-white portrait of Chester Agsamosam',
@@ -32,15 +33,44 @@ export const profile = {
     `I’m a developer with 9 years of experience building and maintaining production web applications. I currently work at Ascendion, where I contribute to a widely used digital wallet in the Philippines, working on new features, reusable components, bug fixes, and improvements to existing systems.`,
     'My strongest experience is in frontend development using Vue.js, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, with additional experience in Svelte. I also have experience with backend development, databases, APIs, and real-time data, which allows me to work across different parts of an application when needed.',
     'Before Ascendion, I worked as a Full-Stack Developer at Codabyte, where I worked on website development, database administration, real-time crypto data streaming, and resolving issues across the application.',
-    'I also use AI tools in my day-to-day work when they can help me save time, explore solutions, or handle repetitive tasks. I still rely on my experience and understanding of the project to decide what actually works and how the final solution should be implemented.',
+    'Most of my engineering now runs through AI agents. I plan the work, break it into checked steps, have agents draft and review the code, and verify every change against the real product before it ships. That workflow lets me deliver faster without lowering the quality bar.',
     'I’m looking for an opportunity where I can apply my experience across frontend and backend development, continue growing, and contribute to building reliable and useful products.',
     ],
   },
   summary:
-    'Passionate and versatile software engineer with full-stack experience building modern, responsive, and user-focused web applications. I have contributed to projects for a well-known digital wallet in the Philippines, working with modern frontend technologies and development practices. Today, I use AI to move faster, solve harder problems, and raise the quality of work — without outsourcing the craft itself.',
+    'You get one engineer who owns the whole thing: the agent design, the integrations, the interface your users touch, and the production hardening. I scope small, ship a working version early, and measure whether it actually saves you time or money.',
   about: [
-    'I build production frontend systems that have to feel effortless: clear structure, fast interaction, and components that survive real product pressure.',
-    'My core stack is Vue.js 2/3, Svelte, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, with additional full-stack work in Laravel. I treat AI as a force multiplier on skills I already own — not a substitute for them.',
+    'I am an AI agentic engineer. I build software where language models do more than chat. They read your data, call your APIs, make decisions inside guardrails you set, and hand off to a person when they should.',
+    'Before agents, I spent nine years shipping production web apps: five of them on frontend systems for a widely used Philippine digital wallet, plus Laravel full-stack and real-time data work. That background is why my agents come with a usable interface, sane error handling, and logs you can read.',
+    'The AI twin in the corner of this page is a small example. It is a streaming chat agent on a Cloudflare Worker, grounded in my own profile so it answers from facts instead of guessing.',
+  ],
+  services: [
+    {
+      title: 'Custom AI agents',
+      outcome: 'Agents that take a task off your team\'s plate and finish it.',
+      deliverables: ['Tool-using agents', 'Multi-step workflows', 'Human approval steps', 'Guardrails and logging'],
+    },
+    {
+      title: 'AI inside your product',
+      outcome: 'Assistants, copilots, and chat that know your data and speak in your voice.',
+      deliverables: ['Knowledge-grounded chat', 'Retrieval (RAG)', 'Streaming UI', 'Model and cost tuning'],
+    },
+    {
+      title: 'Workflow automation',
+      outcome: 'The repetitive back-office work, handled by agents connected to your stack.',
+      deliverables: ['API and CRM integrations', 'Email and document processing', 'Scheduled agents', 'MCP servers'],
+    },
+    {
+      title: 'Web apps, built AI-first',
+      outcome: 'Full products delivered faster because agents do the typing and I do the engineering.',
+      deliverables: ['Vue / Nuxt / Svelte', 'TypeScript', 'Laravel back ends', 'Edge deployment'],
+    },
+  ],
+  process: [
+    { step: 'Scope', detail: 'A short call to find the one workflow where an agent pays for itself first.' },
+    { step: 'Prototype', detail: 'A working version on your real data within days, so you judge results, not slides.' },
+    { step: 'Harden', detail: 'Evaluations, guardrails, error handling, and monitoring before real users touch it.' },
+    { step: 'Hand off', detail: 'Clear docs and a walkthrough so your team owns it, with ongoing support if you want it.' },
   ],
   contact: {
     email: 'chesteragsamosam@gmail.com',
@@ -60,10 +90,10 @@ export const profile = {
     name: 'Chester-Agsamosam-CV.docx',
   },
   skills: [
-    { group: 'Core', items: ['Vue.js 2/3', 'TypeScript', 'JavaScript', 'Svelte'] },
+    { group: 'Agentic', items: ['AI agents', 'Tool calling', 'MCP', 'RAG', 'Prompt and eval design', 'Claude Code', 'OpenRouter'] },
+    { group: 'Core', items: ['TypeScript', 'JavaScript', 'Vue.js 2/3', 'Nuxt', 'Svelte'] },
+    { group: 'Systems', items: ['Laravel', 'Cloudflare Workers', 'REST APIs', 'Real-time data', 'Full-stack delivery'] },
     { group: 'Interface', items: ['Web Design', 'HTML', 'CSS', 'Tailwind CSS', 'Bootstrap'] },
-    { group: 'Systems', items: ['Laravel', 'Full-stack delivery', 'Frontend optimization'] },
-    { group: 'Practice', items: ['Artificial Intelligence (AI)', 'Mentorship', 'Technical refinement'] },
   ],
   personal: {
     chess:
@@ -71,11 +101,11 @@ export const profile = {
   },
   chat: {
     intro:
-      "Hi, I'm Chester's digital twin. I'm a software developer with 9 years of experience, including production work on a major Philippine digital wallet, plus Laravel full-stack experience and a practical use of AI to ship cleaner, faster work. Off the board I love chess. Ask about my career, stack, or how I think through a problem.",
+      "Hi, I'm Chester's digital twin. I'm an AI agentic engineer: I build AI agents, AI features inside products, and automations for clients, backed by 9 years of production web engineering, including a major Philippine digital wallet. Off the board I love chess. Ask what I could build for you, how I work, or about my background.",
     starters: [
-      { label: 'Career', prompt: 'Walk me through your career and what you own day to day.' },
-      { label: 'Stack', prompt: 'What are you strongest with, and how do you use AI in your work?' },
-      { label: 'Chess', prompt: 'You mentioned chess — how does that fit into who you are?' },
+      { label: 'Build', prompt: 'I have a business problem. What kind of AI agent could you build for it?' },
+      { label: 'Process', prompt: 'How does a project with you work, from first call to launch?' },
+      { label: 'Background', prompt: 'Walk me through your career and how you use AI agents in your engineering.' },
     ],
   },
   languages: [

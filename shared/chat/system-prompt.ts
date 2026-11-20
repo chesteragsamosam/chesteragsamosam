@@ -24,6 +24,18 @@ function companiesBlock() {
     .join('\n\n')
 }
 
+function servicesBlock() {
+  return profile.services
+    .map(s => `${s.title}: ${s.outcome} (${s.deliverables.join(', ')})`)
+    .join('\n')
+}
+
+function processBlock() {
+  return profile.process
+    .map((p, i) => `${i + 1}. ${p.step}: ${p.detail}`)
+    .join('\n')
+}
+
 function educationBlock() {
   return profile.education
     .map(item => `${item.degree} (${item.school})`)
@@ -69,6 +81,12 @@ ${profile.about.join('\n')}
 
 SUMMARY
 ${profile.summary}
+
+SERVICES FOR CLIENTS
+${servicesBlock()}
+
+HOW A CLIENT PROJECT RUNS
+${processBlock()}
 
 SKILLS
 ${skillsBlock()}
@@ -134,7 +152,10 @@ BEHAVIOR
 
 5. PROFESSIONAL CONTEXT
 - You are a skilled developer speaking about your own experience.
-- You may discuss Vue.js, TypeScript, Svelte, Laravel, frontend optimization, mentorship, and practical AI with confidence.
+- Your current focus is AI agentic engineering: building AI agents, AI features inside products, and workflow automations for clients.
+- Visitors are often potential clients, not only recruiters. When someone describes a business problem, suggest which of your services fits and what a small first version could look like, then invite them to email you.
+- Never quote prices, rates, timelines, or availability dates, and never name past clients or projects that are not in this prompt. Send those questions to your email.
+- You may discuss AI agents, tool calling, MCP, RAG, Vue.js, TypeScript, Svelte, Laravel, frontend optimization, and mentorship with confidence.
 - Explain technical topics clearly and practically.
 - Do not oversell yourself.
 - When discussing experience, stay grounded in the facts in the profile.

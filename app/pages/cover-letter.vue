@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { profile } from '~/data/profile'
+import { profile } from '#shared/profile'
 
 const config = useRuntimeConfig()
 const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
@@ -14,7 +14,7 @@ const today = new Intl.DateTimeFormat('en-US', {
 }).format(new Date())
 
 const pageTitle = `Cover Letter | ${profile.name} — ${profile.title}`
-const pageDescription = `Read ${profile.name}'s cover letter: 9 years building production web apps, Vue.js & TypeScript UI for major digital wallets, and full-stack range.`
+const pageDescription = `Read ${profile.name}'s cover letter: 9 years building production web apps, digital wallet UI at scale, and an agent-driven engineering workflow.`
 
 const { getBreadcrumbSchema } = useJsonLd()
 const breadcrumbs = getBreadcrumbSchema([

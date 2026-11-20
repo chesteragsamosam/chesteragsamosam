@@ -1,10 +1,10 @@
 # Chester Agsamosam — Comprehensive Developer Profile & Context
 
-> Full background, technical skills, production achievements, and professional timeline of Chester Agsamosam, Software Engineer based in Lipa City, Batangas, Philippines.
+> Full background, technical skills, production achievements, and professional timeline of Chester Agsamosam, AI Agentic Engineer based in Lipa City, Batangas, Philippines.
 
 ## Personal Information & Contact
 - **Full Name:** Chester Agsamosam
-- **Preferred Title:** Software Engineer
+- **Preferred Title:** AI Agentic Engineer
 - **Nationality:** Filipino
 - **Location:** Lipa City, Batangas, Philippines
 - **Email:** chesteragsamosam@gmail.com
@@ -14,7 +14,7 @@
 - **Official Portfolio:** https://chesteragsamosam.github.io/chesteragsamosam/
 
 ## Professional Overview
-Chester Agsamosam is a Software Engineer with 9 years of software development experience (since 2017), with deep specialization in high-scale frontend architecture using Vue.js (versions 2 and 3), Svelte, and TypeScript. 
+Chester Agsamosam is an AI agentic engineer who builds AI agents, AI product features, and workflow automations for clients. He has 9 years of software development experience (since 2017), with deep specialization in high-scale frontend architecture using Vue.js (versions 2 and 3), Svelte, and TypeScript. 
 
 He combines enterprise UI expertise—including production engineering for a premier Philippine digital wallet serving millions of users—with Laravel full-stack range and AI-augmented development workflows.
 
