@@ -43,7 +43,7 @@ useHead({
   meta: [
     {
       name: 'keywords',
-      content: 'Chester Agsamosam, AI Agentic Engineer, AI agent developer for hire, custom AI agents, AI automation, LLM integration, Software Engineer Philippines, Vue.js Developer, TypeScript Engineer, Svelte Developer, Web Application Developer Lipa City, Ascendion Developer',
+      content: 'Chester Agsamosam, AI Agentic Engineer, AI Engineer Philippines, AI agent developer for hire, custom AI agents, agentic workflows, AI automation, LLM integration, RAG, MCP server developer, Cloudflare Workers AI, full-stack AI engineer, TypeScript, Nuxt',
     },
   ],
   script: [

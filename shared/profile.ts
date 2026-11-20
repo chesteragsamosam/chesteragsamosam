@@ -30,18 +30,18 @@ export const profile = {
     greeting: 'Dear Hiring Manager,',
     closing: 'Respectfully,',
     paragraphs: [
-    `I’m a developer with 9 years of experience building and maintaining production web applications. I currently work at Ascendion, where I contribute to a widely used digital wallet in the Philippines, working on new features, reusable components, bug fixes, and improvements to existing systems.`,
-    'My strongest experience is in frontend development using Vue.js, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, with additional experience in Svelte. I also have experience with backend development, databases, APIs, and real-time data, which allows me to work across different parts of an application when needed.',
-    'Before Ascendion, I worked as a Full-Stack Developer at Codabyte, where I worked on website development, database administration, real-time crypto data streaming, and resolving issues across the application.',
-    'Most of my engineering now runs through AI agents. I plan the work, break it into checked steps, have agents draft and review the code, and verify every change against the real product before it ships. That workflow lets me deliver faster without lowering the quality bar.',
-    'I’m looking for an opportunity where I can apply my experience across frontend and backend development, continue growing, and contribute to building reliable and useful products.',
+    `I’m an AI agentic engineer with 9 years of experience building and maintaining production web applications. I design and ship AI agents that do real work: they read data, call APIs, run multi-step workflows inside guardrails, and hand off to a person when they should.`,
+    'Most of my engineering now runs through AI agents. I plan the work, break it into checked steps, have agents draft and review the code, and verify every change against the real product before it ships. I build with tool calling, the Model Context Protocol (MCP), retrieval-augmented generation (RAG), and prompt and evaluation design, and I deploy agents to the edge on Cloudflare Workers. The AI digital twin on my portfolio is a working example: a streaming chat agent grounded in my own profile so it answers from facts instead of guessing.',
+    'That agent work sits on a strong production foundation. At Ascendion I contribute to a widely used digital wallet in the Philippines, shipping features, reusable components, optimizations, and fixes under enterprise quality bars, and mentoring fellow developers. Before that, as a Full-Stack Developer at Codabyte, I handled website development, database administration, and real-time crypto data streaming.',
+    'Because I have shipped across the stack, from TypeScript, Vue.js, Nuxt, and Svelte interfaces to Laravel back ends and APIs, the agents I build come with a usable interface, sane error handling, and logs you can read, not only a demo.',
+    'I’m looking for an AI engineering role where I can build agents and AI features that run reliably in production, keep growing, and contribute to useful products.',
     ],
   },
   summary:
     'You get one engineer who owns the whole thing: the agent design, the integrations, the interface your users touch, and the production hardening. I scope small, ship a working version early, and measure whether it actually saves you time or money.',
   about: [
     'I am an AI agentic engineer. I build software where language models do more than chat. They read your data, call your APIs, make decisions inside guardrails you set, and hand off to a person when they should.',
-    'Before agents, I spent nine years shipping production web apps: five of them on frontend systems for a widely used Philippine digital wallet, plus Laravel full-stack and real-time data work. That background is why my agents come with a usable interface, sane error handling, and logs you can read.',
+    'Before agents, I spent nine years shipping production web apps: five of them on a widely used Philippine digital wallet, plus Laravel full-stack and real-time data work. That background is why my agents come with a usable interface, sane error handling, and logs you can read.',
     'The AI twin in the corner of this page is a small example. It is a streaming chat agent on a Cloudflare Worker, grounded in my own profile so it answers from facts instead of guessing.',
   ],
   services: [
@@ -134,20 +134,20 @@ export const profile = {
       span: '5 years',
       roles: [
         {
+          title: 'Development Specialist',
+          dates: '2021 — Present',
+          points: [
+            'Optimization and refactoring of production code: structure, performance, maintainability, and reuse.',
+            'Proactively proposing technical solutions during refinement and catching issues before they ship.',
+            'Technical guidance and mentorship for fellow developers.',
+          ],
+        },
+        {
           title: 'Frontend Developer',
           dates: 'November 2021 — Present',
           points: [
             'Feature work, support, and web-component development for a highly popular e-wallet in the Philippines.',
-            'Delivered production UI under enterprise quality bars — maintainable, performant, and built for continued evolution of the platform.',
-          ],
-        },
-        {
-          title: 'Development Specialist',
-          dates: '2021 — Present',
-          points: [
-            'Frontend optimization and refactoring: structure, performance, maintainability, and reuse.',
-            'Proactively proposing technical solutions during refinement and catching issues before they ship.',
-            'Technical guidance and mentorship for fellow developers.',
+            'Delivered production software under enterprise quality bars — maintainable, performant, and built for continued evolution of the platform.',
           ],
         },
       ],

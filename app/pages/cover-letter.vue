@@ -14,7 +14,7 @@ const today = new Intl.DateTimeFormat('en-US', {
 }).format(new Date())
 
 const pageTitle = `Cover Letter | ${profile.name} — ${profile.title}`
-const pageDescription = `Read ${profile.name}'s cover letter: 9 years building production web apps, digital wallet UI at scale, and an agent-driven engineering workflow.`
+const pageDescription = `Read ${profile.name}'s cover letter: an AI agentic engineer who builds tool-using AI agents, RAG, and MCP integrations, backed by 9 years of production engineering.`
 
 const { getBreadcrumbSchema } = useJsonLd()
 const breadcrumbs = getBreadcrumbSchema([

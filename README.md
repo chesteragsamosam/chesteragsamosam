@@ -1,4 +1,4 @@
-# Chester Agsamosam — Software Engineer Portfolio
+# Chester Agsamosam — AI Agentic Engineer Portfolio
 
 [![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat-square&logo=vue.js&logoColor=white)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -7,7 +7,7 @@
 [![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white)](https://chesteragsamosam.github.io/chesteragsamosam/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
-> Official portfolio, technical case notes, and interactive digital twin for **Chester Agsamosam**, a Software Engineer with 9 years of software development experience, specializing in high-scale frontend systems using **Vue.js (2 & 3)**, **TypeScript**, and **Svelte**. Includes production UI engineering for a leading Philippine digital wallet at Ascendion, full-stack Laravel range, technical SEO architecture, Schema structured data, and Core Web Vitals audit optimization.
+> Official portfolio and interactive AI digital twin for **Chester Agsamosam**, an **AI Agentic Engineer** who builds custom AI agents, AI features inside products, and workflow automations, using **tool calling**, **MCP**, **RAG**, and **Cloudflare Workers**. Backed by 9 years of production engineering (since 2017), including a leading Philippine digital wallet at Ascendion and full-stack **TypeScript**, **Vue/Nuxt**, **Svelte**, and **Laravel** work.
 
 - 🌐 **Live Portfolio:** [https://chesteragsamosam.github.io/chesteragsamosam/](https://chesteragsamosam.github.io/chesteragsamosam/)
 - 📄 **Cover Letter:** [https://chesteragsamosam.github.io/chesteragsamosam/cover-letter](https://chesteragsamosam.github.io/chesteragsamosam/cover-letter)
@@ -18,9 +18,11 @@
 
 ## ⚡ Quick Highlights
 
-- **9 Years of Software Development Experience** (since 2017), with 5+ continuous years dedicated to modern frontend architecture.
+- **AI Agentic Engineering:** Tool-using agents, multi-step workflows with human approval steps, RAG, MCP servers, guardrails, evaluations, and logging.
+- **Agent-driven delivery:** Work is planned into checked steps, drafted and reviewed by AI agents, and verified against the real product before shipping.
+- **9 Years of Production Engineering** (since 2017) across full-stack web, real-time data, and enterprise fintech.
 - **Enterprise Scale UI:** Developed production features, design system components, and performance optimizations for a premier Philippine digital wallet used by millions.
-- **Core Technology Stack:** Vue.js (2/3, Composition API), TypeScript, Svelte, Tailwind CSS, Nuxt, and Laravel.
+- **Core Technology Stack:** TypeScript, Nuxt, Vue.js (2/3), Svelte, Laravel, Cloudflare Workers, OpenRouter, Tailwind CSS.
 - **Craft & Performance:** Statically generated with Nuxt, optimized for Core Web Vitals (LCP/CLS/INP), full Schema.org JSON-LD structured data, and responsive high-contrast aesthetics.
 
 ---
@@ -97,7 +99,7 @@ chesteragsamosam/
 ## 🎯 Projects & Selected Highlights
 
 1. **Portfolio & Digital Twin:**
-   - Responsive, dark-mode personal site featuring dynamic particle canvas, interactive career timeline, and an AI-powered conversational twin.
+   - Streaming AI chat agent on a Cloudflare Worker, grounded in a structured profile so it answers from facts instead of guessing, inside a statically generated Nuxt site.
    - Live at [chesteragsamosam.github.io/chesteragsamosam](https://chesteragsamosam.github.io/chesteragsamosam/)
 2. **Enterprise Digital Wallet UI (Ascendion):**
    - Built resilient web-components and mission-critical payment workflows.
@@ -109,7 +111,7 @@ chesteragsamosam/
 
 ## 📬 Availability & Contact
 
-I am open to software engineering roles, including UI architecture and product-focused development.
+I am available for AI agent and automation projects with clients worldwide, and open to AI engineering roles.
 
 - **Email:** [chesteragsamosam@gmail.com](mailto:chesteragsamosam@gmail.com)
 - **LinkedIn:** [linkedin.com/in/chesteragsamosam](https://www.linkedin.com/in/chesteragsamosam)
